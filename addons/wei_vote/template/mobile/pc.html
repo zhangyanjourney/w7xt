@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html>
+        
+        <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+                <meta charset="utf-8">
+                <title><?php echo $this->settings[0]['name'];?></title>
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+             
+
+                <link rel="stylesheet" type="text/css" href="{TEMPLATE_PATH}css/pc.css">
+	<link rel="stylesheet" type="text/css" href="{TEMPLATE_PATH}js/sweetalert.css">
+	  <script type="text/javascript" src="{TEMPLATE_PATH}js/jquery-1.8.3.min.js"></script>
+                <style type="text/css">.outlogin_layerbox_bylx, .outlogin_layerbox_bylx p, .outlogin_layerbox_bylx div, .outlogin_layerbox_bylx li, .outlogin_layerbox_bylx input{font: 12px/1.125 "Simsun", "Arial Narrow", "HELVETICA"!important;} .outlogin_layerbox_bylx{width:292px!important;position:absolute;border-width:1px!important;border-style:solid!important;text-align:left!important;z-index:1000;overflow:visible!important;} .outlogin_layerbox_bylx .cur_move{position:relative!important;width:477px!important;height:17px!important;cursor:move;left:0!important;clear:both!important;overflow:visible!important;} .outlogin_layerbox_bylx a.layerbox_close{position:absolute!important;right:8px!important;top:8px!important;width:12px!important;height:11px!important;padding:5px!important;font:700 12px "Simsun"!important;text-decoration:none!important;overflow:hidden!important;z-index:10!important;} .outlogin_layerbox_bylx .close_loginname{position:absolute!important;width:11px!important;height:11px!important;padding:5px!important;left:182px!important;top:4px!important;font:700 12px "Simsun"!important;text-decoration:none!important;overflow:hidden!important;background:#fff;} .outlogin_layerbox_bylx a.layerbox_close:hover{text-decoration:none!important;} .outlogin_layerbox_bylx .layerbox_left{width:259px!important;display:inline!important;float:right!important;margin-top:-17px!important;height:260px;padding:17px 0 17px 30px!important;border-right-width:1px!important;border-right-style:solid!important;} .outlogin_layerbox_bylx .layerbox_left .titletips{padding:8px 0 35px!important;} .outlogin_layerbox_bylx .layerbox_left ul.loginformlist{list-style:none!important;padding:0!important;margin:0!important;} .outlogin_layerbox_bylx .layerbox_left ul.loginformlist li{width:260px!important; clear:both!important; padding-bottom:12px!important;*padding-bottom:11px!important; vertical-align:top;} .outlogin_layerbox_bylx .layerbox_left ul.loginformlist .sub_wrap_r{height:20px!important;} .outlogin_layerbox_bylx .layerbox_left ul.loginformlist .ndrelativewrap{position:relative!important;} .outlogin_layerbox_bylx .layerbox_left ul.loginformlist li .btn_wrap{float:left!important;} .outlogin_layerbox_bylx .layerbox_left ul.loginformlist li input.styles{margin:0!important;border-style:solid!important;border-width:1px!important;width: 178px!important;height:14px!important;padding:6px 20px 7px 4px!important;outline-style:none!important;vertical-align:middle!important;overflow:hidden!important;} .outlogin_layerbox_bylx .layerbox_left ul.loginformlist li input.styles::-ms-clear{display:none!important;} .outlogin_layerbox_bylx .layerbox_left ul.loginformlist input.styles:focus::-webkit-input-placeholder {color:transparent!important;} .outlogin_layerbox_bylx .layerbox_left ul.loginformlist input.styles:focus::-moz-placeholder {color:transparent!important;} .outlogin_layerbox_bylx .layerbox_left .pre_name{display:block!important;;padding-top:50px!important;width:205px!important;; white-space:nowrap!important;text-overflow:ellipsis!important;overflow:hidden!important;font-size:18px!important;height:25px!important;} .outlogin_layerbox_bylx .layerbox_left .chg_ac{display:block!important;height:16px!important;font-size:14px!important;text-decoration:none!important;} .outlogin_layerbox_bylx .layerbox_left ul.loginformlist li.loginform_yzm{height:28px!important;} .outlogin_layerbox_bylx .layerbox_left ul.loginformlist li.loginform_yzm input.styles{width:90px!important; float:left!important;} .outlogin_layerbox_bylx .layerbox_left ul.loginformlist li.loginform_yzm .disability_voice{display:inline-block; width:35px;height:29px;vertical-align:middle!important;} .outlogin_layerbox_bylx .layerbox_left ul.loginformlist li.loginform_yzm img.yzm{float:left!important;margin-left:12px!important;height:28px!important;} .outlogin_layerbox_bylx .layerbox_left ul.loginformlist li.loginform_yzm .reload-code{float:left!important;margin:7px 0 0 5px!important;width:24px!important;height:18px!important;cursor:pointer!important;} .outlogin_layerbox_bylx .layerbox_left ul.loginformlist a.login_btn{float:left!important;margin-right:6px!important;padding:7px 18px!important;text-decoration:none!important;font-size:14px!important;} .outlogin_layerbox_bylx .layerbox_left ul.loginformlist a.register_lnk{text-decoration:none;vertical-align:middle;} .outlogin_layerbox_bylx .layerbox_left ul.loginformlist a.register_lnk:hover{text-decoration:underline; } .outlogin_layerbox_bylx .layerbox_left ul.loginformlist .auto_checkbox{vertical-align:-2px!important;_vertical-align:-1px!important;margin:0 5px 0 0!important;} .outlogin_layerbox_bylx .layerbox_left ul.loginformlist label{margin:0 0 0 0!important;vertical-align:middle!important;} .outlogin_layerbox_bylx .layerbox_left ul.loginformlist a.forget_Pwd{margin-right:10px!important;text-decoration:none!important;vertical-align:middle!important;_vertical-align:-1px!important;} .outlogin_layerbox_bylx .layerbox_left .log_option{float:left!important;padding:7px 20px 0 0!important;*padding-top:12px!important;} .outlogin_layerbox_bylx .layerbox_left ul.loginformlist a.forget_Pwd:hover{text-decoration:underline!important;} .outlogin_layerbox_bylx .association{position:absolute!important;left:30px;top:94px;margin:0;border-width:1px!important;border-style:solid!important;width:230px;overflow:hidden!important;padding:0;clear:both!important;} .outlogin_layerbox_bylx .association li{margin:0 1px!important;padding:3px!important;line-height:1.2!important;list-style:none!important;white-space:nowrap!important;} .outlogin_layerbox_bylx .association li.note_item{margin:4px!important;padding:0!important;} .outlogin_layerbox_bylx .association li a{display:block!important;text-decoration:none!important;} .outlogin_layerbox_bylx .login_error_tips{position:absolute; top:42px; left:215px; z-index:10;margin:0 0 10px 0!important;width:225px!important;padding:5px!important;} .outlogin_layerbox_bylx .login_recom_tips{position:absolute; top:42px; left:215px; z-index:10; border:1px #797979 solid; background:#ffffcc; margin:0 0 10px 0!important;padding:5px; white-space:nowrap;} .outlogin_layerbox_bylx .layerbox_left ul.loginformlist li .rmb_login{float:left;padding:8px 0 0 10px;} .outlogin_LoginBtn:hover{text-decoration:underline!important;} .outlogin_LoginBtn .LoginIcon{display:inline-block!important;height:15px!important;width:16px!important;vertical-align:middle!important;} .outlogin_LoginBtn .LoginTx{vertical-align:middle!important;padding-left:5px!important;cursor:pointer!important;} .outlogin_layerbox_bylx .otwo_d_wrap{width:185px!important;height:260px!important;_width:182px!important;} .outlogin_layerbox_bylx .otwo_d_wrap .otwo_tl{height:40px!important;padding:8px 0 0 26px!important;} .outlogin_layerbox_bylx .otwo_d_wrap .td_wrap{border-right:1px solid #ededed!important;height:128px!important;padding-right:30px!important;text-align:right!important;overflow:visible!important;} .outlogin_layerbox_bylx .otwo_d_wrap .td_wrap img{border:none!important;display:inline!important;}
+                        .outlogin_layerbox_bylx .otwo_d_wrap .thumb{float:right;;border:2px solid #dfdfdf;-webkit-border-radius:60px;-moz-border-radius:60px;border-radius:60px;width:120px;height:120px;overflow:hidden; box-shadow:0 0 2px 3px hsla(0,0%,20%,.05)} .outlogin_layerbox_bylx .otwo_d_wrap .thumb img{width:120px;height:120px;-webkit-border-radius:60px;-moz-border-radius:60px;border-radius:60px;} .outlogin_layerbox_bylx .otwo_hlp{position:absolute!important;left:175px!important;top:59px!important;width:229px!important;height:329px!important;background:#ebebeb!important;background:hsla(0,0%,0%,.08)!important;z-index:16!important;} .outlogin_layerbox_bylx .otwo_hlp .hlp_cnt{margin:3px!important;border:1px solid #dadada!important;height:310px!important;padding:10px 0 0 0px!important;background:#fff;!important} .outlogin_layerbox_bylx .otwo_hlp .otwo_hlp_tl{height:23px!important;line-height:1!important;} .outlogin_layerbox_bylx .otwo_hlp .ot_arrow{position:absolute!important;top:68px!important;left:-7px!important;width:11px!important;height:16px!important;background:url(https://i.sso.sina.com.cn/images/login/arrow.png) no-repeat 0 0!important;} .outlogin_layerbox_bylx .swip_check{position:absolute!important;left:10px!important;top:25px!important;border:1px solid #ccc!important;width:204px!important;height:46px!important;background:#fffae1!important; box-shadow:0 0 3px hsla(0,0%,0%,.2)!important; border-radius:3px!important;} .outlogin_layerbox_bylx .swip_check_cls, .outlogin_layerbox_bylx .swip_check_icon, .outlogin_layerbox_bylx .swip_check_btmarow{background-image:url(https://i.sso.sina.com.cn/images/login/swip_icon.gif)!important;background-repeat:no-repeat!important;overflow:hidden!important;} .outlogin_layerbox_bylx .swip_check_cls{float:right!important;display:inline!important;margin:9px!important;width:10px!important;height:10px!important;background-position:1px -27px!important;} .outlogin_layerbox_bylx .swip_check_icon{float:left!important;margin:5px!important;width:15px!important;height:15px!important;background-position:0 -8px!important; } .outlogin_layerbox_bylx .swip_check_txt{ margin:4px 0 0!important;overflow:hidden!important;line-height:18px!important;} .swip_check_btmarow{position:absolute!important;bottom:-6px!important;left:50%!important;margin-left:-3px!important;width:10px!important;height:6px!important;background-position:0 0!important;} .outlogin_layerbox_bylx{width:477px!important;border-color:#ffc525;color:#434242;box-shadow:4px 4px 0 rgba(0,0,0,.1);background-color:#fff;} .outlogin_layerbox_bylx a.layerbox_close{color:#666;} .outlogin_layerbox_bylx a.layerbox_close:hover{color:#3f7bc1;} .outlogin_layerbox_bylx .close_loginname{color:#666;} .outlogin_layerbox_bylx .close_loginname:hover{color:#DA0000;} .outlogin_layerbox_bylx .layerbox_left{border-right-color:#fff;background:#fff;} .outlogin_layerbox_bylx .layerbox_left input.styles{border-color:#d0d0d0;background:#FFF;} .outlogin_layerbox_bylx .layerbox_left .disability_voice{background:url(https://i.sso.sina.com.cn/images/login/voice.gif) no-repeat 50% 50%;} .outlogin_layerbox_bylx .layerbox_left a.login_btn{background:#ff8500;color:#fff;} .outlogin_layerbox_bylx .layerbox_left a.login_btn:hover{background:#ff931d;} .outlogin_layerbox_bylx .layerbox_left a.register_lnk{color:#a87a2c;} .outlogin_layerbox_bylx .layerbox_left a.login_lnk:hover{color:#a87a2c;} .outlogin_layerbox_bylx .layerbox_left a.forget_Pwd{color:#a87a2c;} .outlogin_layerbox_bylx .association{border-color:#ddd;background:#fff;} .outlogin_layerbox_bylx .association .note_item{color:#999;} .outlogin_layerbox_bylx .association a{color:#999;} .outlogin_layerbox_bylx .association .current{background:#f4f5f7;} .outlogin_layerbox_bylx .login_error_tips{color:#DA0000; } .outlogin_layerbox_bylx .login_recom_tips{color:#000; } .outlogin_LoginBtn .LoginIcon{background:url(https://i.sso.sina.com.cn/images/login/loginButton_16a.png) no-repeat 0 0;} .outlogin_layerbox_bylx li.loginform_yzm .reload-code{background:url(https://i.sso.sina.com.cn/images/login/verify_refresh.png) no-repeat 0 0;} .outlogin_layerbox_bylx li.loginform_yzm .reload-code:hover{background-position:0 -18px;} .outlogin_layerbox_bylx .chg_ac{color:#ff8500;} .outlogin_layerbox_bylx .layerbox_left .qq_spanoption{float:left!important;padding:8px 20px 0 0!important;*padding-top:8px!important;} .outlogin_layerbox_bylx .layerbox_left ul.loginformlist li span a.qq_login_h{margin-right:10px!important;text-decoration:none;vertical-align:middle!important;_vertical-align:-1px!important;color:#000;} .outlogin_layerbox_bylx .layerbox_left ul.loginformlist li span a.qq_login_h:hover{color:#ff8500;text-decoration:underline !important} .outlogin_layerbox_bylx .layerbox_left ul.loginformlist li span a span.qq_login_logo {display: inline-block;width: 16px;height: 16px;margin-right: 5px;background-image: url(https://i.sso.sina.com.cn/images/login/qq.png);background-repeat: no-repeat;vertical-align: middle;}</style>
+                <style type="text/css">.ui-outlogin-shake {-webkit-animation:outlogin-layer-shake 600ms;} @-webkit-keyframes outlogin-layer-shake { 0% {-webkit-transform:translateX(0px);-webkit-animation-timing-function:ease-out;} 10% {-webkit-transform:translateX(-16px);-webkit-animation-timing-function:ease-in;} 20% {-webkit-transform:translateX(0px);-webkit-animation-timing-function:ease-out;} 30% {-webkit-transform:translateX(8px);-webkit-animation-timing-function:ease-in;} 40% {-webkit-transform:translateX(0px);-webkit-animation-timing-function:ease-out;} 50% {-webkit-transform:translateX(-4px);-webkit-animation-timing-function:ease-in;} 60% {-webkit-transform:translateX(0px);-webkit-animation-timing-function:ease-out;} 70% {-webkit-transform:translateX(2px);-webkit-animation-timing-function:ease-in;} 80% {-webkit-transform:translateX(0px);-webkit-animation-timing-function:ease-out;} 90% {-webkit-transform:translateX(-1px);-webkit-animation-timing-function:ease-in;} 100% {-webkit-transform:translateX(0px);-webkit-animation-timing-function:ease-out;} }</style>
+                <style type="text/css">.real-time-window .rtw2-lt,.real-time-window .rtw2-close,.real-time-window .rtw2-close-btn,.real-time-window .rtw2-lt-sina{background:url(//n.sinaimg.cn/default/7919a7ba/20160621/realtime.png) 0 0 no-repeat}.real-time-window{z-index:60000;display:block;height:46px;line-height:46px;overflow:hidden;zoom:1;font-family:"Microsoft YaHei","微软雅黑","SimHei","黑体"!important}.real-time-window .rtw2-in{height:46px;line-height:46px;overflow:hidden}.real-time-window .rtw2-lt{display:inline;float:left;width:82px;height:46px;background-color:#f9f5ec;zoom:1}.real-time-window .rtw2-md{display:inline;float:left;background:#f9f5ec;height:44px;line-height:44px;padding-right:5px;zoom:1;border-top:1px solid #f6e3c9;border-bottom:1px solid #f6e3c9}.real-time-window .rtw2-md-title{display:inline-block;height:44px;line-height:44px;padding:0 7px;font-size:16px}.real-time-window .rtw2-md-title:link{color:#122E67!important;text-decoration:none!important}.real-time-window .rtw2-md-title:hover{color:#ff8400!important;text-decoration:underline!important}.real-time-window .rtw2-md-title:visited{color:#52687e!important;text-decoration:none!important}.real-time-window .rtw2-close{display:inline;width:76px;height:48px;float:left;background-position:-82px 0;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=scale,src="http://n.sinaimg.cn/default/7919a7ba/20160621/realtime_right.png");_background:none;zoom:1;position:relative}.real-time-window .rtw2-close-btn{position:absolute;right:2px;top:10px;width:26px;height:25px;display:block;background-position:-88px -47px}.real-time-window .rtw2-close-btn:hover{filter:alpha(opacity=80);opacity:0.8}.real-time-window .rtw2-lt-sina{width:36px;height:36px;display:block;text-indent:-9999px;background-position:2px -46px}.real-time-window .rtw2-lt-sina:hover{background-position:-35px -46px}.real-time-window .rtw2-close-more{padding-left:9px}.real-time-window .rtw2-close-more:link{font-size:14px!important;line-height:46px;color:#866755;text-decoration:none!important}.real-time-window .rtw2-close-more:visited{color:#866755!important;text-decoration:none!important}.real-time-window .rtw2-close-more:hover{color:#e01700!important;text-decoration:underline!important}</style></head>
+        
+		
+		<style>
+		
+		.vote-field {
+    float: left;
+    width: 100%;
+}
+.vote-btn {
+    position: relative;
+    top: 8px;
+    margin: 0 auto;
+    width: 180px;
+    height: 30px;
+    cursor: pointer;
+    background: #b49a5a;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    line-height: 30px;
+    text-decoration: none;
+    border-radius: 20px;
+}
+
+.vote-info {
+    display: inline-block;
+    margin: 14px auto 0;
+    text-align: center;
+}
+.instruction {
+    padding: 20px 0;
+    background: #353535;
+    color: #e6d8c0;
+    text-align: center;
+    line-height: 2;
+    font-size: 18px;
+    padding: 10px;
+}
+.footer .contact-us ul {
+    padding-left: 33%;
+    background: url() 68px center no-repeat; 
+    line-height: 2;
+}
+	
+		</style>
+        <body id="top">
+   
+                <div class="real-time-window" style="display: none; position: fixed; left: 0px; bottom: -49px;"></div>
+          
+                <div class="wrapper" id="main">
+                        <!-- 头部图片 -->
+                       <!--  <div class="header" id="header">
+                                <div class="m-friend">
+     
+                                        <br>
+
+                                </div>
+                        </div> -->
+           
+                        <div class="section cont">
+
+                                <div class="intro">
+                                   {php echo html_entity_decode($this->settings[0]['huodong_sm'], ENT_QUOTES)}</div>
+                        </div>
+               
+                        <div class="section" id="candidate">
+                                <h2 class="p-tt" style="background-image: url(//n.sinaimg.cn/finance/dongmi17/images/tt_01.png);">投资候选人</h2>
+                            
+                                <div class="vote cont">
+                                        <ul class="list clearfix" id="added_candidates"></ul>
+                                </div>
+                                <div class="vote cont">
+                                        <ul class="list clearfix" id="top50list">
+                                            {loop $list $index $item}
+                                                <li class="vote-item js-vote-item" onclick ="toupiao({$item['id']})" id="sh601398">
+                                                        <div class="item-poster">
+                                                                <div class="pic lazy">
+																  <?php
+															$item['tupian'] = str_replace("&quot;","",$item['tupian']);
+														        $item['tupian'] =  htmlspecialchars_decode($item['tupian']);
+														        $item['tupian'] = stripslashes($item['tupian']);
+														        $he = (explode(",",$item['tupian'])); 
+                                                                $f = $he[0];
+                                                                 
+														?>
+																
+																
+                                                                        <img alt="{$item['name']}" src="{media $f}">
+                                                                        <div class="cover"></div>
+                                                                </div>
+                                                                <p class="txt-name">{$item['name']}</p>
+                                                                <!-- <p class="txt-position">工商银行(sh601398)</p> -->
+                                                                <p class="txt-intro">{$item['feifa']}</p></div>
+                                                        <div class="item-action">
+                                                                <div class="vote-field">
+                                                                        <p class="vote-btn js-vote-zan" data-id="sh601398">赞TA</p>
+                                                                        <p class="vote-info">
+                                                                                <span class="icon icon-zan">X</span>
+                                                                                <span class="num">{$item['piao']}</span></p>
+                                                                </div>
+                                                                
+                                                        </div>
+                                                </li>
+                                            {/loop}  
+                                               
+                                        </ul>
+                                        <!-- <div class="btn-more" id="btn_more">+ 查看更多候选人</div> -->
+								</div>
+                        </div>
+                        <!-- 候选人 end-->
+                       
+                      
+                     
+                      
+                        <!--侧栏 start-->
+                        <div class="aside-bar" id="aside">
+                                <a class="item item01" href="<?php echo $this->createMobileUrl('Pc', array('hdid'=>$_GPC['hdid']));?>#timeline">活动说明</a>
+                                <a class="item item02" href="<?php echo $this->createMobileUrl('Pc', array('hdid'=>$_GPC['hdid']));?>#candidate">我要投票</a>
+     
+                               <!--  <div class="item item04">微信投票
+                                        <div class="luyan-box">
+                                                <img src="{TEMPLATE_PATH}images/luyan_qr.png" title="扫码了解">扫一扫
+                                                <span>微信投票</span></div>
+                                </div> -->
+                         
+                                <a class="item top" href="<?php echo $this->createMobileUrl('Pc', array('hdid'=>$_GPC['hdid']));?>#top">返回顶部</a></div>
+                        <!--侧栏 end-->
+                        <!-- 投票说明 start-->
+                       <!--  <div class="section" id="timeline">
+                                <div class="instruction cont">
+                                        <h2>—— 网络投票说明 ——</h2
+                                       {php echo html_entity_decode($this->settings[0]['huodong_sm'], ENT_QUOTES)}
+                                </div>
+                        </div> -->
+						
+						
+						
+						
+						<div class="section">
+                                <div class="instruction cont">
+                                        <h2>—— 温馨提示 ——</h2>
+                                       {php echo html_entity_decode($this->settings[0]['weng_x'], ENT_QUOTES)}
+                                </div>
+                        </div>
+						
+						{if $this->settings[0]['jian_p'] != ''}
+           <div class="section">
+                                <div class="instruction cont">
+                                        <h2>—— 活动奖品 ——</h2>
+                                       {php echo html_entity_decode($this->settings[0]['jian_p'], ENT_QUOTES)}
+                                </div>
+                        </div>
+    {else}
+
+    {/if}
+						
+						
+						
+						
+						
+						
+						
+					{if $peiz[0]['jian_p'] != ''}
+              <div class="section">
+                                <div class="instruction cont">
+                                        <h2>—— 活动奖品 ——</h2>
+                                       {php echo html_entity_decode($peiz[0]['jian_p'], ENT_QUOTES)}
+                                </div>
+                        </div>
+    {else}
+
+    {/if}	
+						
+						
+                        <!-- 投票说明 end -->
+                        <!-- footer start -->
+                       <!--  <div class="footer mt50">
+                                <div class="contact-us cont">
+                                        <ul>
+                                                <li>
+                                                        <p>参赛事宜</p>
+                                                        <p>电话：010-62675122</p>
+                                                        <p>邮箱：123456@staffcom.cn</p>
+                                                </li>
+                                                <li style="display:none;">
+                                                        <p>商务合作</p>
+                                                        <p>电话：13811714812</p>
+                                                        <p>邮箱：123456@staff.com.cn</p>
+                                                </li>
+                                        </ul>
+                                </div>
+                                <div class="uni-footer">
+                                     
+                                        <p>Copyright © 1996 - 2016 SINA Corporation, All Rights Reserved</p>
+                                        <p>
+                                                <a href="#" class="sinatail">版权所有</a></p>
+                                </div>
+                        </div> -->
+                        <!-- footer end --></div>
+              
+              
+            
+         
+  
+               
+        </body>
+			<script type="text/javascript" src="{TEMPLATE_PATH}js/sweetalert.min.js"></script>
+        <script>
+		
+		        function toupiao(id){
+				
+				
+
+             $.post('{php echo $this->createMobileUrl('pcajax',array('type'=>'uids'))}', { p: id}, function(data){
+
+	         console.log(data);
+	
+swal(data.a)
+                 
+ 
+         
+    },'json')
+				
+				
+				
+				
+				
+				}
+		
+		
+		
+		
+		
+		</script>
+</html>

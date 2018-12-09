@@ -1,0 +1,348 @@
+{template 'common_head_top'}
+<script type="text/javascript" src="{$_W['siteroot']}app/resource/js/app/util.js"></script>
+	<script src="{$_W['siteroot']}app/resource/js/require.js"></script>
+<script type="text/javascript" src="{$_W['siteroot']}app/resource/js/lib/jquery-1.11.1.min.js?v=20170802"></script>
+	<script type="text/javascript" src="{$_W['siteroot']}app/resource/js/lib/mui.min.js?v=20170802"></script>
+
+
+	<link href="{$_W['siteroot']}app/resource/css/common.min.css?v=20170802" rel="stylesheet">
+	
+
+  <link rel="stylesheet" type="text/css" href="{TEMPLATE_PATH}css/conn.css">
+    <link rel="stylesheet" type="text/css" href="{TEMPLATE_PATH}css/list.css">
+	<link rel="stylesheet" type="text/css" href="{TEMPLATE_PATH}js/sweetalert.css">
+
+	    <style>
+	   .paytj span i {
+    font-size: 14px;
+    margin-right: 3px;
+}
+	   
+	   /*微信风格*/
+@active_color_red:#44b549;
+@active_color:#44b549;
+@normal:#44b549;
+@active_btn_br:#89e88d;
+@heart_big:#44b549;
+@heart_small:#89e88d;
+@font-face {
+  font-family: 'iconfont';  /* project id 207851 */
+  src: url('//at.alicdn.com/t/font_207851_kajjd1qrqjx7p66r.eot');
+  src: url('//at.alicdn.com/t/font_207851_kajjd1qrqjx7p66r.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_207851_kajjd1qrqjx7p66r.woff') format('woff'),
+  url('//at.alicdn.com/t/font_207851_kajjd1qrqjx7p66r.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_207851_kajjd1qrqjx7p66r.svg#iconfont') format('svg');
+}
+.iconfont { font-family: iconfont; font-size: 1.6rem; font-style: normal; }
+body { padding: 0; margin: 0; font-size: .85rem; color: #333; }
+.bb { background: #f6f6f6; margin: 0 auto; }
+img { width: 100%; max-width: 640px; }
+.center { max-width: 640px; width: 100%; height: 100%; margin: 0 auto; }
+.fr { float: right; }
+.fl { float: left; }
+.fix { clear: both; }
+.btn { display: inline-block; background: @normal; color: #fff; border-radius: 3px; padding: .8rem; font-size: .85rem; }
+.btn:active { background: #555; color: #f5f5f5; }
+.btn:visited { background: @normal; color: #fff; }
+.btn2d { display: inline-block; background: @normal; color: #fff; border-radius: 3px; padding: .8rem; font-size: .85rem; border-bottom: 3px solid @active_btn_br; border-right: 1px solid @active_btn_br; }
+.btn2d:active { background: #555; border-bottom: 3px solid @active_color; color: #f5f5f5; }
+.btn2d:visited { background: @normal; color: #fff; }
+/*顶部滚动文字#ffd800*/
+.NoticeTop { display:table; width:100%; height:36px;line-height:36px; background:@normal;color:#fff;}
+.NoticeTop i { display:table-cell;vertical-align:middle; text-align:center;font-size:1.3rem;padding:0 0.6rem;color:#fff }
+.NoticeTop marquee { display:table-cell;vertical-align:middle; width:95%; }
+/*首页-轮播图滚动小点*/
+.swiper-wrapper, .swiper-slide { height: auto !important; }
+.swiper-pagination-bullet-active { background: @active_color !important; }
+/*头部标题栏*/
+.ctr { max-width: 640px; width: 100%; margin: 0 auto; }
+.ctr .top { height: 40px; line-height: 40px; box-shadow: 0px 0px 3px #aaa; background: #fff; }
+.ctr .top a { color: #333; }
+.ctr .top .h_left { display: inline-block; width: 10%; float: left; height: 40px; line-height: 40px; text-align: center; font-size: 1rem !important; }
+.ctr .top .h_left i.iconfont { font-size: 1rem; }
+.ctr .top .h_title { display: inline-block; width: 80%; text-align: center; word-break: keep-all; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ctr .top .h_right { display: inline-block; width: 10%; float: right; height: 40px; line-height: 40px; text-align: center; }
+
+/*统计*/
+.tongji { margin: .6rem 0; }
+.tongji li { list-style-type: none; display: inline-block; float: left; width: 33%; height: auto; text-align: center; color: #555; }
+.tongji li:nth-child(2n) { border-left: 1px solid #ddd; border-right: 1px solid #ddd; }
+.tongji li label { display: block; color: #222; }
+/*个人页面统计*/
+.detail_tongji i { font-size: 1.3rem; display: inline-block; vertical-align: middle; }
+.detail_tongji li:nth-child(2n) { border-left: none; }
+.detail_tongji li { width: 24.5%; border-right: 1px solid #ddd; }
+.detail_tongji li:last-child { border-right: none; }
+
+/*充值页面*/
+.pay .li { padding: .6rem; }
+.pay .info { height: 92px; }
+.pay .info td { padding: .6rem; background: #fff; border-bottom: 10px solid #f6f6f6; }
+.pay .info td:first-child { width:62px;}
+.pay .info img { border-radius: 100%; width: 62px; max-height: 62px; padding:0 .6rem; float: left; }
+.pay .detail { padding: .3rem; }
+.pay .desc { background: #fff; padding: .6rem;padding-top:0; }
+.pay .zuan { display: inline-block; width: 33.33%; float: left; }
+.pay .zuan .cur { background: @active_color_red; color: #fff; border: 1px solid @active_color_red; }
+.pay .zuan div { font-style: oblique; font-size: 1.2rem; color: @active_color_red; margin: .3rem; border: 1px solid #ddd; padding:.3rem .6rem; border-radius: 3px; text-align: center; }
+.pay .zuan div label { font-size: .7rem; font-style: normal; margin-left: .3rem; }
+.pay #zuaninput { border: 1px solid #ddd; border-radius: 3px; width: 80%; padding: .6rem; }
+.follow { border:1px dotted @active_color_red;margin:.3rem;border-radius:3px;padding:3px;background:#f6f6f6}
+
+	
+	
+	
+	.pay .zuan .cur {
+    background: #44b549;
+    color: #fff;
+    border: 1px solid #44b549;
+}
+
+
+.pay .zuan div {
+    font-style: oblique;
+    font-size: 1.2rem;
+    color: #44b549;
+    margin: .3rem;
+    border: 1px solid #ddd;
+    padding: .3rem .6rem;
+    border-radius: 3px;
+    text-align: center;
+}    
+.paytj span {
+   
+    float: left;
+}	
+.paytj {
+  
+    background: #fff;
+}	
+
+.diff {
+  
+    clear: both;
+}
+        .detail div.descContent { overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+        .paytj { margin-bottom: 10px; font-size: 12px; }
+        .paytj span { display: inline-block; width: 25%; background: #fff; text-align: center; color: #444; margin: 2px 0 0 0; padding-top: .3rem; }
+        .paytj span i { font-size: 14px; }
+        .diff { padding: .3rem .6rem; background: #fff; text-align: center; }
+        .ref { font-size: 12px; position: absolute; right: 0; margin-top: .3rem; margin-right: 1rem; }
+    </style> 
+	<style> 
+	.paytj span {
+ 
+			width: 33.33%;
+		   
+	}
+	</style> 
+    {if $this->settings['0']['isliwu'] == 1&&$this->settings['0']['liwuinfo'] == 0}
+	<style> 
+	.paytj span {
+ 
+			width: 25%;
+		   
+		}
+	</style> 				
+				
+	{/if}	
+
+	
+</head>
+<body class="bb">
+    <div class="ctr">
+        <div class="top">
+            <a class="h_left" href="{php echo $this->createMobileUrl('list',array('id'=>$_GPC['id'],'hdid'=>$_GPC['hdid']))}"><i class="iconfont"></i></a>
+            <span class="h_title">给 {$account['name']}送礼物</span>
+            <a class="h_right"></a>
+        </div>
+    </div>
+	 <?php
+    $item['tupian'] = $account['tupian'];
+
+    $item['tupian'] = str_replace("&quot;","",$item['tupian']);
+	$item['tupian'] =  htmlspecialchars_decode($item['tupian']);
+	$item['tupian'] = stripslashes($item['tupian']);
+	$he = (explode(",",$item['tupian'])); 
+    $f = $he[0];
+?>
+    <div class="center pay">
+        <div class="li">
+		
+		<script language="JavaScript">
+			function getNewTongji()
+			{
+			   window.location.reload();
+			}
+
+			</script>
+
+            <label class="iconfont ref" onclick="getNewTongji()">&nbsp;刷新</label>
+            <table border="0" cellspacing="0" cellpadding="0" style="width: 100%;">
+                <tbody><tr class="info">
+                    <td style="padding-right: 0; border-bottom: 0;">
+                       <div style="width: 62px;height:62px;    border-radius: 50%;"> <img src="{media $f}"></div>
+                    </td>
+                    <td style="padding-left: 0; border-bottom: 0;">
+                        <div class="detail">
+                            <label> {$account['name']}</label>&nbsp;<label>{$account['bh']}号</label>
+                            <div class="descContent">{$account['feifa']}</div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody></table>
+
+            <div class="paytj animated bounceIn">
+                <span><i class="icon iconfont icon-renwubangdan" style="font-size: 12px;"></i>编号<br>
+                    <label id="rank_tj">{$account['bh']}</label>
+                </span><span class="piao"><i class="icon iconfont icon-piaoshu" style="font-size: 14px;"></i>票数<br>
+                    <label id="piao_tj">{$account['piao']}</label>
+                </span><span><i style="font-size: 12px;" class="icon iconfont icon-paiming"></i>排名<br>
+                    <label id="click_tj"><?php echo ($z_total+1); ?></label>
+                </span>
+				
+				{if $this->settings['0']['isliwu'] == 1&&$this->settings['0']['liwuinfo'] == 0}
+					 <?php 
+						  $account['yuan'] = ceil($account['yuan']); 
+						?>
+					 <span><i  style="font-size: 12px;" class="icon iconfont icon-liwu"></i>点<br>
+						<label id="click_tj">{$account['yuan']}</label>
+					</span>
+				{/if}	
+				
+				<!-- <span><i  style="font-size: 12px;" class="icon iconfont icon-liwu"></i>礼物<br>
+                    <label id="click_tj">{$account['yuan']}</label>
+                </span> -->
+                <div class="diff">
+                     <label id="endTime" class="timespan">距离结束 0天00时00分00秒</label>
+                    <label id="diff_tj"></label>
+                </div>
+            </div>
+            <div class="desc">
+                <div class="zuan_list">
+					{loop $liwu $index $item}
+						<div class="zuan">
+							<div data-price="{$item['jiner']}" data-id="{$item['id']}" data-name="{$item['name']}" data-addpiao="{$item['piao']}" data-unit="个" >
+								<img src="{php echo tomedia($item['tupian']);}" style="width: 50px; height: 50px; border-radius: 100%;display:inline-block">
+								<label style="display: block">
+									{$item['name']}<br>
+								   {$item['jiner']}元</label>
+							</div>
+						</div>
+					{/loop}
+                  
+                </div>
+               
+             
+                <div style="clear: both"></div>
+                
+            </div>
+            <div id="chooseDesc" class="desc" style="text-align: center">每个“泰迪熊”1元，同时票数加3票</div>
+            <div class="desc" style="text-align: center; padding-bottom: 1rem; display: none">
+                数量
+				<input type="text" id="zuaninput" value="1" placeholder="选择或输入礼物数量">
+            </div>
+            <div style="height: 10px">&nbsp;</div>
+        </div>
+		
+        <div class="mui-content-padded">
+		      
+			  <button type="button" style="background-color: #44b549;color:#fff" class="mui-btn mui-btn-block mui-disabled js-wechat-pay">微信支付（加载中）</button>
+		    </div>
+       
+    
+    </div>
+<script type="text/javascript">
+
+//发起微信支付，微信支付依赖于 WeixinJSBridge 组件，所以发起时应该在ready事件中进行
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+	$('.js-wechat-pay').removeClass('mui-disabled');
+	$('.js-wechat-pay').click(function(){
+    	//先通过AJAX获取最新的订单号
+		var dataid = $('.cur').attr('data-id'); 
+    	$.getJSON("{php echo $this->createMobileUrl('Wxjspayapi',array('p'=>$_GPC['id'],'hdid'=>$_GPC['hdid']))}&dataid="+dataid, function(data, status){
+			
+			if(status == 'success'){
+			    if(data.code!=10008){
+				    alert(data.msg);return false;
+				}
+				
+				util.pay({
+					orderFee : data.pay.fee,
+					payMethod : 'wechat',
+					orderTitle : '支付' + data.pay.fee + '元',
+					orderTid : data.pay.tid,
+					module : 'wei_vote',
+					success : function(result) {
+						alert('支付成功');
+					},
+                    fail : function(result) {
+                        alert('fail : ' + result.msg);
+                    },
+					complete : function(result) {
+						//location.reload();
+					}
+				});
+			}
+		});
+	});
+	$('.js-wechat-pay').html('微信支付');
+});
+
+
+</script>	
+<script>   
+var date="<?php echo $this->settings[0]['endtime'];?>";  
+date=date.replace(new RegExp(/-/gm) ,"/"); 　　//将所有的'-'转为'/'即可 
+var starttime = new Date(date);    
+setInterval(function () {     
+
+	 var nowtime = new Date();     
+	 var time = starttime - nowtime;     
+	 var day = parseInt(time / 1000 / 60 / 60 / 24);    
+	 var hour = parseInt(time / 1000 / 60 / 60 % 24);     
+	 var minute = parseInt(time / 1000 / 60 % 60);     
+	 var seconds = parseInt(time / 1000 % 60);     
+	 $('.timespan').html(day + "天" + hour + "小时" + minute + "分钟" + seconds + "秒");   
+ 
+ }, 1000); 
+ </script> 
+<script>
+
+$(function($) {
+
+$('.zuan div').get(0).click();
+
+
+});
+
+  $('.zuan div').click(function () {
+            $('.zuan div').removeClass('cur');
+            $(this).addClass('cur');
+            $('#zuaninput').val(1);
+
+            var name = $(this).attr('data-name'),
+				price = parseFloat($(this).attr('data-price')),
+				addpiao = parseInt($(this).attr('data-addpiao')),
+				unit=$(this).attr('data-unit');
+
+            var form = $('#topayform');
+            form.find('input[name=Vote_Fee]').val(price);
+            form.find('input[name=Vote_Diamond]').val(addpiao);
+            form.find('input[name=name]').val(unit+name);
+
+            $('#chooseDesc').text("每"+unit+"“" + name + "”" + parseFloat(price) + "元，同时票数加" + addpiao + "票");
+        })
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

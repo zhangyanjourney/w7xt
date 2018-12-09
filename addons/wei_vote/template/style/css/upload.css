@@ -1,0 +1,457 @@
+
+/*头部开始*/
+.w{
+  /*width: 640px;*/
+  width: 100%;
+  margin: 0 auto;
+}
+#_box1{
+        display: none;
+}
+
+#_box2{
+        display: none;
+}
+#_box3{
+        display: none;
+}
+#_box4{
+        display: none;
+}
+#_box5{
+        display: none;
+}
+#file{
+ display: none;
+
+}
+
+#no,#lian-no,#shouno,#feifano,#zui{
+
+  display:none;
+  color:#F00;
+  position: fixed;
+  left: 50%;
+  top: 40%;
+  z-index: 2;
+  width: 218px;
+  height: 100px;
+  border-radius: 8px;
+  margin: -64px 0 0 -114px;
+
+  line-height: 100px;
+  text-align: center;
+  font-size: 12px;
+  color: #fff;
+  opacity: 0.9;
+  background: #3A3232;
+ 
+  }
+
+
+#shouyes{
+  display:none;
+  color:#0F0;
+}
+
+  #feifayes{
+  display:none;
+  color:#0F0;
+}
+
+
+.ts{
+  clear: both;
+  font-size: 12px;
+
+  margin-left: 90px;
+}
+
+#popup{
+  position: fixed;display:none; z-index:3000; background-color:#FFF; left: 50%;
+  top: 50%; height: 150px; width: 217px;line-height:94px;text-align:center;
+  border: 1px solid #69708C;
+}
+#embedding{
+  /*position: fixed; */
+  background-color: #A4AFCF; top: 94px;height:56px; width:217px;line-height:56px;text-align:center;
+}
+
+
+
+#embedding a{
+  text-decoration:none;
+  font-family:"微软雅黑";
+  font-size:18px;
+  color:#FFF;
+    margin: 19px;
+}
+
+
+
+#top {
+
+  height: 44px;
+  line-height: 44px;
+  padding: 0 10px 0 10px;
+  box-sizing:border-box;
+
+}
+
+.top-p1{
+   color: #878787;
+   font-size: 15px;
+   float: left;
+   font-family: Microsoft YaHei;
+
+}
+.top-p2{
+   color: #333333;
+   font-size: 14px;float: left;margin-left: 15px;
+   font-family: Microsoft YaHei;
+
+}
+
+.top-p3 a{
+   color: #e95b56;
+   font-size: 15px;float: right;margin-right: 15x;
+   font-family: Microsoft YaHei;
+
+}
+
+
+body{margin:0 auto;height:100%;font-size:14px;font-family:arial;line-height:1.5;color:#666;-webkit-text-size-adjust:100%;-webkit-user-select:none;user-select:none}
+input{text-rendering: optimizeLegibility;-webkit-font-smoothing: antialiased;}
+#tu{
+  height: 150px;
+  width:150px;
+}
+#vote{
+
+  overflow: hidden;
+  background: #fff;
+  margin-top: 10px;
+}
+.vote-number{
+  margin-top: 6px;
+  width: 33.33%;
+  height: 55px;
+  float: left;
+  line-height: 23px;
+}
+.vote-number p{
+
+  font-size: 14px;
+  text-align: center;
+  font-family: "微软雅黑";
+}
+.vote-number-p1 ,.vote-number-p2{
+
+  color: #ec5353;
+}
+.vote-number-p3{
+
+  color: #6fb5f0;
+}
+
+/*头部结束*/
+
+#Voting{
+
+  margin-top: 10px;
+}
+
+.Voting-title{
+  /* margin-bottom: 10px; */
+
+  height: 37px;
+  background: url(../image/6-1.png) 0px 0px no-repeat;
+  text-align: center;
+  text-align: 37px;
+  color: red;
+  font-family: "Microsoft YaHe";
+  font-size: 15px;
+  font-weight: bold; 
+   background-size: cover;
+  background-position: center;
+}
+
+.Voting-data{
+  padding: 10px 10px 10px 20px;
+  box-sizing:border-box;
+
+}
+
+.sex{
+
+   display: -webkit-box;
+  -webkit-box-align: center;
+  position: relative;
+}
+.sex-xib{
+  display: block;
+  padding-right: 16px;
+}
+
+.sex p{
+  margin-left: 2%;
+  display: block;
+  color: #7f7f7f;
+  width: 90px;
+}
+.Voting-data-s1{
+  width: 57px;
+  display: inline-block;
+}
+
+.radio i{
+  position: relative;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-left: 8px;
+  border-radius: 50%;
+  border: 1px solid #d2d2d2;
+  vertical-align: middle;
+}
+.radio input:checked+i:after
+  /*.radio i:after*/ {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  content: "";
+  width: 8px;
+  height: 8px;
+  background-color: #ff7e72;
+  border-radius: 50%;
+}
+
+#male_opt,#female_opt{
+  opacity: 0;
+  width: 0.1px;
+}
+.Voting-data input{
+  /* margin-left: 5%; */
+}
+.Voting-data div{
+  margin-bottom: 10px; 
+}
+
+.name,.age,.phone{
+  height: 30px;
+  width: 200px;
+  padding: 0 0 0 10px;
+  font-size: 14px;
+  color: #878787;
+  border: 1px solid #F2E1E1;
+}
+.Voting-participate{
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 19px;
+  color: #fff;
+  padding: 0 10px 0 10px;
+  box-sizing:border-box;
+}
+.Voting-participate-d{
+ background: #eda671;
+ width: 100%;
+}
+.Voting-participate-d span{
+  border: none;
+  background: none;
+  font-size: 15px;
+  color: #fff;
+  width: auto;
+  display: block;
+}
+.Voting-data-up{
+  overflow: hidden;
+  position: relative;
+ }
+.jind{
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 0%;
+  height: 5px;
+  background: red;
+}
+.Voting-data-up-right{
+  overflow: hidden;
+}
+.Voting-data-up ul{
+  overflow: hidden;
+}
+.Voting-data-up span{
+padding-top: 10px;
+  width: 57px;
+  height: 100%;
+  display: block;
+  float: left;
+}
+.Voting-data-up ul li{
+  float: left;
+  margin-left: 5%;
+  margin-bottom: 5%;
+  padding-top: 10px;
+  z-index: 1;
+  position: relative;
+  z-index: 1;
+  position: relative;
+}
+#_box{
+  width: 15%;
+  float: left;
+  margin-left: 6%;
+  margin-bottom: 6%;
+  padding-top: 10px;
+  z-index: 1;
+  position: relative;
+}
+ .dw{
+  width: 15px;
+  height: 15px;
+  position: absolute;
+    top: 3px;
+  right: -3px;
+  z-index: 5;
+}
+.declaration{
+
+}
+.grn{
+  position: absolute;
+  top: 30px;
+  left: 180px;
+}
+.Voting-data-sleft{
+float: left;
+  width: 56px;
+  display: inline-block;
+}
+.declaration-1{
+  position:relative;
+  overflow: hidden;
+}
+.declaration-sp{
+  padding: 0 0 0 10px;
+  font-size: 14px;
+  color: #878787; 
+  float: left;
+  resize: none;
+  width: 200px;
+  height: 55px;
+  line-height: 30px;overflow: hidden;
+  border: 1px solid #F2E1E1;
+  margin-left: 6%;
+}
+
+.Voting-lie{
+  overflow: hidden;
+  padding: 10px;
+  box-sizing:border-box;
+}
+.Voting-lie .Voting-lie-1{
+   width: 100%;
+   float: left;
+   height: 40px;
+   text-align: center;
+   line-height: 40px;
+   background: #eda671;
+   color: #fff;
+   font-family: "Microsoft YaHe";
+   font-size: 15px;
+}
+.Voting-lie-1 a{
+   color: #fff;font-size: 15px;
+   display: block;
+   width: auto;
+}
+
+.Voting-lie .Voting-lie-2{
+   width: 44%;
+   float: right;
+   height: 30px;text-align: center;
+   line-height: 30px;
+   background: #eda671;
+   color: #fff;
+   font-family: "Microsoft YaHe";
+   font-size: 15px;
+}
+.Voting-with{  
+   padding: 10px;
+   box-sizing:border-box;
+   font-family: "Microsoft YaHe";
+   font-size: 12px;
+}
+.Voting-Content-red a {
+   color: red;
+}
+.Voting-with{
+   line-height: 25px;
+} 
+.Voting-with-p1{
+    text-indent: 24px;
+}
+.Voting-with p a{
+    color: #F71111;
+}
+.Voting-with strong{
+    font-family: "Microsoft YaHe";
+    font-size: 10px;
+    font-weight: bold;
+}
+#prize
+{
+   margin-bottom: 60px;    overflow: hidden;
+}
+.Voting-er
+{
+   overflow: hidden;
+}
+.Voting-er li
+{
+  float: left;
+  width: 33.33%;
+}
+.sl{
+      width: 70px;
+}
+@media (max-width:321px) { 
+  .Voting-title {
+  background: url(../image/11-1.png) -9px 0px no-repeat;
+  }
+  #tu{
+    height: 75px;
+  }
+  }
+  @media (min-width:322px) and (max-width:376px) { 
+  .Voting-title { 
+    background: url(../image/11-1.png) 15px 0px no-repeat; 
+  }
+  }
+  @media (min-width:619px) { 
+  .sex p {
+    margin-left: 3%;
+  }
+  }
+  @media (max-width:482px) { 
+  #tu{
+    height: 100px;
+    width:100px;
+  }
+  }
+  @media (max-width:380px) { 
+  #tu{
+    height: 75px;
+    width: 75px;
+  }
+  }
+  @media (max-width:380px) { 
+  #tu{
+  height: 55px;
+  width: 55px;
+  }
+}

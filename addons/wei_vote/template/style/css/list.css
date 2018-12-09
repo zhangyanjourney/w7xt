@@ -1,0 +1,450 @@
+img{
+
+    border:0px;
+
+}
+ul{
+
+    list-style: none;
+
+}
+
+a{
+
+    color: #666;
+    text-decoration: none;
+
+}
+a:hover{
+    color: #E4393C;
+}
+
+li{
+	  list-style:none;
+} 
+
+input,button,select,textarea{
+    outline:0px;
+}
+
+
+header,body,section,div,ul,li,dl,dt,dd,h1,h2,h3,span,b,i,p,em,a,input,button{margin:0;padding:0}a{font-size:14px;text-decoration:none}ul,li{list-style:none}h1,h2,h3{font-weight:500;font-size:15px}b,i{font-style:normal;font-weight:400}img,button{border:0}input{border-radius:0;-webkit-tap-highlight-color:rgba(255,0,0,0);border:0;outline:0}code{display:none}
+input{height: 16px;    padding: 4px 0px;    font-size: 12px;}
+body{margin:0 auto;min-width:320px;max-width:640px;height:100%;font-size:14px;font-family:Helvetica,STHeiti STXihei, Microsoft JhengHei, Microsoft YaHei, Arial;line-height:1.5;color:#666;-webkit-text-size-adjust:100%;-webkit-user-select:none;user-select:none}
+body{background:#F5F5F5;font-size:14px}
+img{
+  width: 100%;
+  display: block;
+}
+
+.lef{
+
+   float: left;
+}
+.rig{
+   float: right;
+}
+
+.w{
+
+  width: 100%;
+	margin: 0 auto;
+}
+#top {
+
+  height: 44px;
+  line-height: 44px;
+  padding: 0 10px 0 10px;
+  box-sizing:border-box;
+
+}
+
+.top-p1{
+   color: #878787;
+   font-size: 15px;
+   float: left;
+
+   font-family: Microsoft YaHei;
+
+}
+.top-p2{
+   color: #333333;
+   font-size: 14px;float: left;margin-left: 15px;
+   font-family: Microsoft YaHei;
+
+}
+.top-p3{
+   color: #e95b56;
+   font-size: 15px;
+   float: right;
+   margin-right: 15x;
+   font-family: Microsoft YaHei;
+
+}
+
+#vote{
+  overflow: hidden;
+  background: #fff;
+  margin-top: 10px;
+}
+.vote-number{
+  margin-top: 5px;
+  width: 33.33%;
+  height: 55px;
+  float: left;
+  line-height: 23px;    height: 75px;
+}
+.vote-number p{
+      font-size: 17px;
+
+  text-align: center;
+  font-family: "微软雅黑";    line-height: 35px;
+}
+.vote-number-p1 ,.vote-number-p2{
+
+  color: #ec5353;
+}
+.vote-number-p3{
+
+  color: #6fb5f0;
+}
+#paim{
+  padding: 0 10px 0 10px;
+  box-sizing:border-box;
+  margin-top: 10px;
+  background: #fff;
+}
+.paim-bt{
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+.paim-1{
+  height: 35px;
+  width: 49%;
+  line-height: 35px;
+  background: url(./image/bg5.png) 0 -60px no-repeat #28abf6;
+  text-align: center;
+  background-size: 99px auto;
+}
+.paim-2{
+  height: 35px;
+  width: 49%;
+  line-height: 35px;
+  background: url(./image/bg5.png) 280px -6px no-repeat #f64343;
+  text-align: center;
+  background-size: 100px auto;
+}
+.paim-1-spa{
+
+      font-size: 18px;
+  color: #fff;
+  margin-right:8px; 
+}
+.paim-1-spb{
+
+  font-size: 19px;
+  color: #fff;
+}
+#paim .paim-content p{
+      line-height: 35px;
+        font-size: 17px;
+  font-family: "Microsoft YaHe";
+}
+#paim .paim-content strong{
+    font-size: 20px;
+  font-family: "Microsoft YaHe";
+  color:#f06363;
+
+}
+#paim .paim-content .paim-content-time{
+
+  font-size: 20px;
+  font-family: "Microsoft YaHe";
+  color:#c2c2c2;
+  margin-left: 5px;
+}
+#photo{
+ padding: 0 10px 0 10px;
+ box-sizing:border-box;
+
+}
+#photo .photo-Child li{
+
+  margin-top: 15px;
+}
+
+#photo .photo-but{
+
+  margin-top: 10px;
+  overflow: hidden;
+} 
+ .photo-but a{
+
+  display: block;
+    width: 49%;
+  height:31px;
+  line-height: 31px;
+  background: #eda671;
+  text-align: center;
+  font-size: 15px;
+  font-family: "Microsoft YaHe";
+  color: #fff;
+
+}
+#photo .photo-but .photo-but-list{
+  float: left;
+}
+#photo .photo-but .photo-but-Share{
+  float: right;
+}
+.tup{
+
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  left: -5px;
+}
+.photo-myvote{
+       height: 40px;
+       line-height: 40px;
+       width: 100%;
+       text-align: center;
+       background: #f25959;
+       margin-top: 10px;
+       
+
+}
+.photo-myvote a{
+ color:  #fff;
+ padding-left: 17px;
+ height: 17px;
+ line-height: 17px;position: relative;
+}
+
+#wrap { 
+  height: 26px;
+  position: relative;
+  margin-top: 25px;
+  background: #FFF;
+}
+.arrow {
+ width:0; 
+ height:0; 
+ position:absolute; 
+ left:50%; 
+ margin-left:-17px; 
+ top:-32px; 
+ font-size:0; 
+ border-width:16px; 
+ border-color:transparent transparent #FFF; 
+ border-style:dashed dashed solid; 
+}
+#wrap .wrap-p{
+  font-size: 12px;
+  font-family: "Microsoft YaHe";
+  line-height: 26px;
+  margin-left: 10px;
+  border-bottom: 1px solid #dedede;
+}
+#Children{
+
+  overflow: hidden;
+}
+#Children .Children-ul li{
+  width: 19.99%;
+  float: left;
+  padding: 10px;
+  box-sizing:border-box;
+ 
+}
+#Children .Children-ul li img{
+ border-radius:50%;
+
+}
+#Children .Children-ul li p{
+
+  line-height: 200%;
+  text-align: center;
+  font-size: 15px;
+  font-family: "Microsoft YaHe";
+  overflow: hidden;
+  white-space: nowrap;
+}
+#Children .Children-ul .last-li i{
+  display: block; background: url(./image/3-1.png) 0 0px no-repeat;
+  width: 100%;
+  height:42px;
+
+
+
+
+
+ background-size: 480px auto;
+}
+.Voting-title{
+line-height: 37px;
+  height: 37px;
+ background: url(./image/6-1.png) 0px 0px no-repeat;
+ /*width: 100%;*/
+ /*background-size: 350px auto;*/
+ text-align: center;
+ text-align: 37px;
+ color: red;
+  font-family: "Microsoft YaHe";
+  font-size: 15px;
+  font-weight: bold;
+}
+.ju{
+  width: 100%;
+
+}
+.Voting-Content{
+box-sizing:border-box;
+padding:  5px 10px 5px 10px;
+overflow: hidden;
+}
+
+.Voting-Content ul li {
+
+  line-height: 25px;
+}
+.Voting-Content-red a{
+
+  color: red;
+}
+.Voting-participate{
+
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+ 
+  font-size: 19px;
+  color: #fff;
+  padding: 0 10px 0 10px;
+  box-sizing:border-box;
+}
+.Voting-participate-d{
+ background: #eda671;
+ width: 100%;
+
+}
+.Voting-participate-d a{
+  display: block;
+  width: auto;
+  color: #fff;
+}
+#prize{
+   margin-top: 24px;
+
+}
+
+.prize-le{
+  padding: 10px;
+  box-sizing:border-box;
+  overflow: hidden;
+}
+.prize-le-1, .prize-le-2{
+  width: 49%;
+  /*height: 60px;*/
+  font-size: 14px;
+  font-family: "Microsoft YaHe";
+  text-align: center;
+  line-height: 20px;
+  padding: 10px;
+  box-sizing:border-box;
+
+}
+.prize-le-1{
+  float: left;
+  background: #45a8eb;
+}
+.prize-le-2{
+  float: right;
+  background: #b7b7b7;
+}
+.prize-le-p1{
+  font-size: 14px;
+
+}
+.prize-le-p2{
+    font-size: 10px;
+
+}
+#reminder{
+margin-bottom: 60px;
+
+}
+
+#bot{
+
+  min-width: 320px;
+  background: #fff;
+  width: 100%;
+  height: 50px; 
+  line-height: 50px; 
+  font-size: 1.6rem; 
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 89;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit; 
+
+  padding: 10px;
+  box-sizing:border-box;
+  margin:0 auto;
+}
+#bot ul li{
+   /* width:25%; */
+   height: 38px; 
+   float: left;
+   text-align: center;
+
+}
+/* .ico{
+   width: 20px;
+   height: 20px;
+   display: block; 
+   margin: 0 auto;
+   
+   background: url(../images/55.png) 0 0px no-repeat;
+   background-size: 200%;
+
+} */
+.a1{
+  background-position: 0px -98px;
+}
+.a2{
+
+  background-position: 0px -73px;
+}
+.a3{
+
+  background-position: 0px  -51px;
+}
+@media (max-width:321px) { 
+
+
+  .Voting-title {
+   
+     background: url(../image/11-1.png) -9px 0px no-repeat;
+
+   }
+
+}
+
+
+@media (min-width:322px) and (max-width:376px) { 
+
+
+  .Voting-title {
+   
+    background: url(../image/11-1.png) 15px 0px no-repeat;
+   
+  }
+
+}

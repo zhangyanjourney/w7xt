@@ -1,0 +1,146 @@
+{template 'common_head_top'}
+    <script src="{TEMPLATE_PATH}js/jquery-1.8.3.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="{TEMPLATE_PATH}css/conn.css">
+    <link rel="stylesheet" type="text/css" href="{TEMPLATE_PATH}css/upload.css">
+	
+	<script type="text/javascript" src="{$_W['siteroot']}app/resource/js/app/common.js"></script>
+<link href="{$_W['siteroot']}app/resource/css/common.min.css" rel="stylesheet">
+	
+</head>
+<body>
+ {template 'common_head'}
+<style>
+
+
+</style>
+
+
+<div class="" style="margin-bottom:90px">
+	        <!-- <form action="" method="post" onsubmit="return onCheck()">
+	        	<div class="weui_cells weui_cells_form">
+	        			            <div class="weui_cell">
+		                <div class="weui_cell_hd"><label class="weui_label">身份证号</label></div>
+		                <div class="weui_cell_bd weui_cell_primary">
+		                		                    <input required="required" class="weui_input" id="account" name="shengfenzhen" type="text" placeholder="请输入身份证号">
+		                </div>
+		            </div>
+						            <div class="weui_cell">
+		                <div class="weui_cell_hd"><label class="weui_label">姓名</label></div>
+		                <div class="weui_cell_bd weui_cell_primary">
+		                    <input required="required" class="weui_input" type="text" id="realname" name="ximing" value="" placeholder="请输入姓名">
+		                </div>
+		            </div>
+		            <div class="weui_cell">
+		                <div class="weui_cell_hd"><label class="weui_label">手机号码 </label></div>
+		                <div class="weui_cell_bd weui_cell_primary">
+		                    <input required="required" class="weui_input" type="tel" name="dianhua" id="mobile" maxlength="11" placeholder="请输入手机号码">
+		                </div>
+		            </div>
+					
+		        </div>
+			
+							
+				<div class="weui_cells">
+				   <div class="weui-cells">
+							
+							<div class="weui-cell weui-cell_select weui-cell_select-after">
+								<div class="weui-cell__hd">
+									<label for="" class="weui-label">单位/地址</label>
+								</div>
+								<div class="weui-cell__bd">
+									<select class="weui-select" name="gongshi">
+										<option value="中国">中国</option>
+										<option value="美国">美国</option>
+										<option value="英国">英国</option>
+										 <option value="1">中国</option>
+										<option value="2">美国</option>
+										<option value="3">英国</option>
+										 <option value="1">中国</option>
+										<option value="2">美国</option>
+										<option value="3">英国</option>
+										 <option value="1">中国</option>
+										<option value="2">美国</option>
+										<option value="3">英国</option>
+										 <option value="1">中国</option>
+										<option value="2">美国</option>
+										<option value="3">英国</option>
+										 <option value="1">中国</option>
+										<option value="2">美国</option>
+										<option value="3">英国</option>
+										 <option value="1">中国</option>
+										<option value="2">美国</option>
+										<option value="3">英国</option>
+										 <option value="1">中国</option>
+										<option value="2">美国</option>
+										<option value="3">英国</option>
+										 <option value="1">中国</option>
+										<option value="2">美国</option>
+										<option value="3">英国</option>
+										 <option value="1">中国</option>
+										<option value="2">美国</option>
+										<option value="3">英国</option>
+										 <option value="1">中国</option>
+										<option value="2">美国</option>
+										<option value="3">英国</option>
+										 <option value="1">中国</option>
+										<option value="2">美国</option>
+										<option value="3">英国</option>
+										 <option value="1">中国</option>
+										<option value="2">美国</option>
+										<option value="3">英国</option>
+									</select>
+								</div>
+							</div>
+						</div>
+				</div>
+								<button type="submit" name="submit" value="1" class="weui_btn weui_btn_primary" style="width:90%;margin: 20px 5%">提交申请</button>
+		        <input type="hidden" name="token" value="hPzf">
+	        </form>  -->
+			
+			
+			
+		<div class="mui-collapse-content">
+							<form action="" method="post" class="mui-input-group">
+								<!-- <div class="mui-input-row">
+									<label>身份证号</label>
+									<input type="身份证号"  class="mui-input-clear" name="shengfenzhen" placeholder="身份证号">
+								</div> -->
+								<div class="mui-input-row">
+									<label>身份证号</label>
+									<input type="text" name="shengfenzhen" class="mui-input-clear" placeholder="身份证号" data-input-clear="3"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+								</div>
+								<div class="mui-input-row">
+									<label>姓名</label>
+									<input type="text" name="ximing" class="mui-input-clear" placeholder="姓名" data-input-clear="3"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+								</div>
+	                         	<div class="mui-input-row">
+									<label>手机号码</label>
+									<input type="text" name="dianhua" class="mui-input-clear" placeholder="手机号码" data-input-clear="3"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+								</div>
+								
+								<div class="mui-input-row">
+								<label>单位/地址</label>
+									<select class="weui-select" name="gongshi">
+											<option value="中国">中国</option>
+											<option value="美国">美国</option>
+											<option value="英国">英国</option>
+										
+									</select>
+								</div>
+								<div class="mui-button-row">
+									<button class="mui-btn mui-btn-primary" type="submit" >确认</button>&nbsp;&nbsp;
+									<button class="mui-btn mui-btn-primary" type="button" onclick="return false;">取消</button>
+								</div>
+							</form>
+						</div>		
+			
+			
+
+		
+	
+	
+
+
+
+{template 'common_foot'}

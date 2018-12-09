@@ -1,0 +1,128 @@
+
+header,body,section,div,ul,li,dl,dt,dd,h1,h2,h3,span,b,i,p,em,a,input,button{margin:0;padding:0}a{font-size:14px;text-decoration:none}ul,li{list-style:none}h1,h2,h3{font-weight:500;font-size:15px}b,i{font-style:normal;font-weight:400}img,button{border:0}input{border-radius:0;-webkit-tap-highlight-color:rgba(255,0,0,0);border:0;outline:0}code{display:none}
+body{margin:0 auto;min-width:320px;max-width:640px;height:100%;font-size:14px;font-family:Microsoft YaHei,Helvetica,STHeiti STXihei, Microsoft JhengHei, Microsoft YaHei, Arial;line-height:1.5;color:#666;-webkit-text-size-adjust:100%;-webkit-user-select:none;user-select:none}
+body{background:#F5F5F5;font-size:14px}
+body{margin:0 auto;width: 100%;height:100%;font-size:14px;font-family:arial;line-height:1.5;color:#666;-webkit-text-size-adjust:100%;-webkit-user-select:none;user-select:none}
+img{
+  width: 100%;
+  display: block;
+}
+input{text-rendering: optimizeLegibility;-webkit-font-smoothing: antialiased;}
+a,img,button,input,select{-webkit-tap-highlight-color:transparent;outline:0}
+input[type=”button”], input[type=”submit”], input[type=”reset”],button{
+-webkit-appearance: none;
+}
+button{ border-radius: 0; }
+input:focus, textarea:focus {
+    outline: none;
+}
+input:focus,textarea:focus {
+    outline: none;
+}
+input::-ms-clear {
+    display: none;
+}
+input,textarea{
+  border-radius:0;
+  -webkit-tap-highlight-color:rgba(255,0,0,0);
+  border:0;
+  outline:0
+}
+input{    height: 16px;    padding: 4px 0px;    font-size: 12px;}
+input,button,select,textarea{
+  outline:0px;
+}
+textarea {
+    resize: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0;
+}
+img{
+    border:0px;
+}
+ul{
+    list-style: none;
+}
+a{
+    color: #fff;
+    text-decoration: none;
+    }
+
+li{
+	list-style:none;
+} 
+#bot{
+  min-width: 320px;
+  background: #fff;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  font-size: 1.6rem;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 89;
+  border: 0;
+  font: inherit;
+  padding: 10px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+#bot ul li{
+   width: 20%;
+   height: 38px; 
+   float: left;
+   text-align: center;
+}
+#bot ul li  a{
+  color: #666;
+}
+.ico{
+   width: 20px;
+   height: 20px;
+   display: block; 
+   margin: 0 auto;
+   background: url(../images/55.png) 0 0px no-repeat;
+   background-size: 200%;
+}
+.a1{
+  background-position: 0px -98px;
+}
+.a2{
+  background-position: 0px -73px;
+}
+.a3{
+  background-position: 0px  -51px;
+}
+.a4 {
+    background-position: 0px -126px;
+}
+.icon-wxshare {
+  width:20px;height:18px;
+  display:inline-block;
+  margin-right:6px;
+  vertical-align:-2px;
+  background: url(../images/favor_weixin.png) 0 0 no-repeat;
+  background-size: 20px 18px;
+}
+#favor_weixin{
+  width:100%;
+  height:100%;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:1000;
+  background:url(../images/favor_weixin.png) top right no-repeat rgba(0,0,0,.8);
+  background-size:290px;
+  display:none;
+}
+#float_knowed{bottom:80px;left:30%;width:40%;height:30px;line-height:30px;border:1px solid #b5b5b7;border-radius:4px;color:#cecece}
+.abs{position:absolute}
+.c_txt{text-align:center}
+
+
+
+/*input: -webkit-appearance：none;*/

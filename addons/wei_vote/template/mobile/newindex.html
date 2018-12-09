@@ -1,0 +1,934 @@
+{template 'common_head_top'}
+  <link rel="stylesheet" type="text/css" href="{TEMPLATE_PATH}css/conn.css">
+  <link rel="stylesheet" type="text/css" href="{TEMPLATE_PATH}css/rank.css">
+  <link rel="stylesheet" type="text/css" href="{TEMPLATE_PATH}js/sweetalert.css">
+  <script type="text/javascript" src="{TEMPLATE_PATH}js/jquery-1.8.3.min.js"></script>
+   <script type="text/javascript" src="{TEMPLATE_PATH}js/sweetalert.min.js"></script>
+
+   <style>
+
+
+#no, #lian-no, #shouno, #feifano, #zui {
+    display: none;
+    color: #F00;
+    position: fixed;
+    left: 50%;
+    top: 40%;
+    z-index: 2;
+    width: 218px;
+    height: 100px;
+    border-radius: 8px;
+    margin: -64px 0 0 -114px;
+    line-height: 100px;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+    opacity: 0.9;
+    background: #3A3232;
+}
+
+
+
+
+
+
+
+
+
+   </style>
+   
+   
+   <script type="text/javascript">
+var cc = <?php echo strtotime($this->settings[0]['endtime'])-time();?>;
+var intDiff = parseInt(cc);//倒计时总秒数量
+
+function timer(intDiff){
+	window.setInterval(function(){
+	var day=0,
+		hour=0,
+		minute=0,
+		second=0;//时间默认值		
+	if(intDiff > 0){
+		day = Math.floor(intDiff / (60 * 60 * 24));
+		hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+		minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+		second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+	}
+	if (minute <= 9) minute = '0' + minute;
+	if (second <= 9) second = '0' + second;
+	$('#day_show').html(day+"天");
+	$('#hour_show').html('<s id="h"></s>'+hour+'时');
+	$('#minute_show').html('<s></s>'+minute+'分');
+	$('#second_show').html('<s></s>'+second+'秒');
+	intDiff--;
+	}, 1000);
+} 
+
+$(function(){
+	timer(intDiff);
+});	
+</script>
+   
+   
+   
+   
+   
+   <script type="text/javascript">
+        var latitude = 0;
+		var longitude = 0;
+        wx.ready(function () {
+							wx.getLocation({
+								type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+								success: function (res) {
+									latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+									longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+									var speed = res.speed; // 速度，以米/每秒计
+									var accuracy = res.accuracy; // 位置精度
+									//alert(latitude);
+								},
+								cancel: function (res) {
+									alert('用户拒绝授权获取地理位置');
+									//location.reload(); 
+
+								}
+							});
+
+					});
+        function toupiao(k){
+		  
+		            //var lang = "Java";
+                    lang = ".p_"+k;
+		            
+					location.href = "<?php echo $this->createMobileUrl('list')?>"+"&id=" + id;return;
+					
+		            $.post('{php echo $this->createMobileUrl('listajax',array('type'=>'uids'))}', { p: k,latitude:latitude,longitude:longitude }, function(data){
+                    if(data.b){
+					   $(lang).html(data.b+'票');
+					
+					}
+						 
+					if (data == '')
+					{
+					
+							swal({   title: "'公众号:'+$_W['account']['account']",   text: "今日投票数以用完！",   timer: 4000 });
+							
+					}else
+					{
+							
+							
+							
+							swal({   title: data.a,   text: "公众号:<?php echo $_W['account']['account'];?>",   timer: 4000 });
+							//alert(data.c);
+							if(data.c==1){
+							    setTimeout(function(){
+				   
+				                  window.location.href="{php echo $this->settings[0]['keyword']}";
+							    },2000)
+
+							}
+							if(data.c==4){
+							    setTimeout(function(){
+				   
+				                   window.location.href="{php echo $this->createMobileUrl('Chouqiang',array('type'=>'uids'))}";
+							    },2000)
+
+							}
+							
+							
+							
+					};
+						 
+					},'json')
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		}
+	
+
+</script>
+  <style type="text/css">
+       #xiana
+       {
+           margin-bottom: 60px;
+		   text-align: center;
+		   background: #DDDDD4;
+		   /*margin-top: 10px;*/
+		   height: 40px;
+		   line-height: 40px;
+		       background: #04BE02;color: #FFFFFF;    border-radius: 5px;
+       }
+       #xiana a{
+      color: #FFFFFF;
+       }
+     
+      #subt{
+      display:none;
+      }
+      #zui{
+
+        display:none;
+        color:#F00;
+
+
+        position: fixed;
+        left: 50%;
+        top: 40%;
+        z-index: 2;
+        width: 218px;
+        height: 100px;
+        border-radius: 8px;
+        margin: -64px 0 0 -114px;
+        background: #888888;
+        line-height: 100px;
+        text-align: center;
+        font-size: 12px;
+        color: #fff;
+
+        
+      }
+	  
+	#new{
+	overflow: hidden;
+	}  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+.wall {
+  display: block;
+  position: relative;
+}
+.wall-column {
+  display: block;
+  position: relative;
+  width: 50%;
+  float: left;
+  padding: 0 1%;
+  box-sizing: border-box;
+}
+.article {
+  display: block;
+  margin: 0 0 8% 0;
+  padding: 5%;
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  transition: all 100;
+  overflow: hidden;
+  position: relative;
+}
+.article:hover{ transform: scale(1.01);}
+.article img {
+  display: block;
+  width: 100%;
+  margin: 0 0 5% 0;
+}
+.article a{ color: #666;}
+.article p{ overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 70%; font-size: 1.2em; line-height: 1.5;}
+.article small{ font-size: 1em; color: #ff0000; line-height: 1.5;}
+.article input{ box-sizing: content-box;width: 20%; padding: 0.6em; border-radius: 0.4em; font-size: 12px; z-index: 100; background-color: #f60; border: none; position: absolute; bottom: 3%; right: 5%; color: #fff; box-shadow: 0 0 7px #d7d7d7;}
+/*瀑布流结束*/
+.wrapper h3{ text-align: center; margin:0 20%; white-space: nowrap; text-overflow: ellipsis; font-weight:normal; color: #333; overflow: hidden;  font-size: 1.5em; padding: 0.7em 0;}
+.wrapper h4{ width: 90%; margin:0 5%; text-align: justify; font-weight:normal; color: #999;  font-size: 1.2em; margin-bottom: 3%; line-height:1.5; }
+.pd{
+
+    padding: 0 10px;
+}
+.article p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+   width: 100%; 
+        font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+}
+#tiao{
+
+
+    margin-top: 10px;
+
+    /* line-height: 2em; */
+    background: #FF6600;
+    display: block;
+    height: 40px;
+    text-align: center;
+    color: #fff;    font-size: 14px;
+
+    line-height: 40px;
+
+}
+#toup1{
+
+       background: #FF6600;    color: #fff;
+   padding: 5px;
+
+}
+#new-list {
+
+    margin-bottom: 60px;
+}
+  </style>
+</head>
+<body>
+{template 'common_head'}
+
+
+   <!--  <div id="search" class="w">
+        <div class="search-1">
+              <form id="fo1" action="{php echo $this->createMobileUrl('so',array('type'=>'uids'))}" method="post">
+                 <input id="search-inp" type="search" name="name" placeholder="按姓名或者编号搜索" value="">
+                
+                 <span id="search-but">搜索</span>
+				         <input type="submit" value="name" id="subt">
+
+              </form>   
+              <span id="search-spa"><a href="{php echo $this->createMobileUrl('weiindex',array('type'=>'uids'))}">我要参与</a></span>
+        </div>
+    </div> -->
+   <!--  <div id="canyu">
+      <span class="canyu-sp2">最新参加</span><span class="">最热排名</span>
+    </div> -->
+ 
+		<div style="line-height:40px;background:rgb(183,17,41);  WIDTH: 100%;  color:#fff;FONT-FAMILY: arial; TEXT-ALIGN: center;">
+    <!-- <P style="font-size:.8em;line-height:2em;">距活动结束还有：</P> -->
+
+	
+	<div class="time-item"><span>距活动结束还有：</span>
+	<span id="day_show">0天</span>
+	<strong style ="color:#fff;font-size:14px"  id="hour_show">0时</strong>
+	<strong style ="color:#fff;font-size:14px" id="minute_show">0分</strong>
+	<strong style ="color:#fff;font-size:14px" id="second_show">0秒</strong>
+</div>
+
+
+
+</div>   
+
+{if $feileis['name'] == ''}
+  <P id="tiao" style="line-height:40px;margin-top:10px;background: #FF6600;">{$fenzhu['name']}</P>
+{else}
+  <P id ="tiao" style="line-height:40px;margin-top:10px;background: #FF6600;">{$feileis['name']}</P>
+{/if}                   
+    <div id="wsp">
+              <div id="rank-1" class="one" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">
+                 
+                            <ul class="lie">
+                                 
+										{loop $res $i $item}
+										<li class="rank-1-li">
+                                            <a href="{php echo $this->createMobileUrl('list',array('type'=>'uids','id'=>$item['id']))}">
+                                                  <div class="rank-lt">
+                                                      <span class="rank-lt-s hs"><?php echo $i+1; ?><i class="bg<?php echo $i+1; ?>"></i></span>
+                                                        <?php
+															$item['tupian'] = str_replace("&quot;","",$item['tupian']);
+														        $item['tupian'] =  htmlspecialchars_decode($item['tupian']);
+														        $item['tupian'] = stripslashes($item['tupian']);
+														        $he = (explode(",",$item['tupian'])); 
+                                                                $f = $he[0];
+                                                                  //$f = substr($he[0],1);
+																  $f = 'images/'.$f;
+														?>
+                                                       <div class="rank-lt-d"><img src="{media $f}"></div>
+                                                        <div class="rank-lt-w">
+                                                          <p class="rank-lt-p1">{$item['name']}</p>
+                                                          <p class="rank-lt-p2">投票编号：<strong class="s1">{$item['id']}</strong></p>
+                                                        </div>
+                                                  </div>
+                                                  <div class="rank-rt">
+                                                   
+                                                      <?php
+								 if($item['piao']>999){
+								   
+									 $mx = $item['piao']%999;
+									 $zx = floor($item['piao']/999);
+									 
+									 echo " <img src='".$_W['siteroot']."addons/wei_vote/template/style/images/1.png'>".$item['piao']."";
+								 }else{
+								     $mx = $item['piao'];
+									 $zx = 0;
+								  echo " <img src='".$_W['siteroot']."addons/wei_vote/template/style/images/1.png'>".$item['piao']."";
+								 }
+							 
+							 
+							 ?>
+                                                  </div>
+                                            </a>
+                                        </li>
+										{/loop}
+										
+                            </ul>
+                
+             <!--  <div id="jiaz">
+                    <a href="#">点击加载更多...</a>
+               </div> -->
+    </div>
+    <div id="new-list" class="one" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1); ">
+   
+           <div id="new">
+               <div class="wrapper">
+							<ul class="wall new-ul">
+							{loop $nes $i $item}
+							<li class="article">
+							<?php
+														$item['tupian'] = str_replace("&quot;","",$item['tupian']);
+														        $item['tupian'] =  htmlspecialchars_decode($item['tupian']);
+														        $item['tupian'] = stripslashes($item['tupian']);
+														        $he = (explode(",",$item['tupian'])); 
+                                                                $f = $he[0];
+                                                                 
+																  $f = 'images/'.$f;
+														?>
+									<a href="{php echo $this->createMobileUrl('list',array('type'=>'uids','id'=>$item['id']))}">
+										<img src="{media $f}" /></a>
+										 <p  onclick="di({$item['id']})"><span id="toup1">投票</span></p>
+									    <p>10{$item['id']} {$item['name']}</p>
+										<p class ="p_{$item['id']}">票数：{$item['piao']}票</p>
+										<!-- <p><input class ="toupiao" onclick="toupiao({$item['id']})" type="button" value="投票" /></p> -->
+									
+								</li>
+								{/loop}	
+								
+							</ul>
+						</div>
+           </div>
+          
+            <!--  -->
+			<!-- <div class ="pd">
+				<div id="xiana">
+						<a href=#">点击加载更多...</a>
+				   </div>
+			
+			</div> -->
+              
+      
+  </div>
+</div>
+<span id="no" class="ok1"></span>
+<span id="zui" class="ok1"></span>
+<div id="loading" style="position:fixed;display:none;z-index:2000;top:0px;left:0px;width:100%;height:100%;background-color:rgba(0, 0, 0, 0.2);"></div>
+
+
+
+<!-- jquery-2.1.3.min.js -->
+<!-- <script type="text/javascript" src="{TEMPLATE_PATH}js/zepto.20140212.js"></script> -->
+
+<script type="text/javascript" src="{TEMPLATE_PATH}js/jaliswall.js"></script>
+<script type="text/javascript">
+	$(function(){
+	 
+		$('.wall').jaliswall({ item: '.article' });
+	});
+</script>
+<script type="text/javascript">
+     $(function()
+     {
+		 <!-- $('#canyu span').on("tap",function() -->
+		 $('#canyu span').on("click",function()
+		 {
+			var m = $(this).index();
+			$('#canyu span').removeClass('canyu-sp2');
+			$('#canyu span').eq(m).addClass('canyu-sp2');
+			//$('#wsp .one').hide()
+			//$('#wsp .one').eq(m).show();
+			$('#wsp .one').show();
+			$('#wsp .one').eq(m).hide();
+		})
+		
+		
+		
+	
+	})
+	
+	
+	  function di(id){
+		 
+		   		location.href = "<?php echo $this->createMobileUrl('list')?>"+"&id=" + id;
+		 
+		 }
+	
+	
+	
+	
+</script>
+
+
+<script type="text/javascript">
+$(function(){
+
+
+          var p = 5, lock = false;
+      $("#jiaz").on('click', function (e)
+      {
+          e.preventDefault();
+      if (lock)
+      {
+          return;
+      }
+          lock = true;
+      $("#jiaz").text('游记加载中..');
+          p = p+5;
+		 
+      $.post('{php echo $this->createMobileUrl('voindex',array('type'=>'uids'))}', { p: p }, function(data)
+      {
+	          // data = eval('(' + data + ')');;
+           
+      if (data)
+      {
+
+          $('.lie').append(data);
+          $("#jiaz").text('加载更多');
+          lock = false;
+
+      }else
+      {
+
+         $("#jiaz").text('加载完毕');
+
+      };
+
+         
+      });
+      });
+
+
+
+
+
+
+
+
+})
+ 
+</script>
+
+
+<script type="text/javascript">
+
+
+
+$(function(){
+
+         var b = 10, lock = false;
+      $("#xiana").on('click', function (e)
+      {	
+	var ww = $(".article:eq(0) img").width();
+	//  alert($(".article:eq(0) img").height());
+         e.preventDefault();
+      if (lock)
+      {
+         return;
+      }
+         lock = true;
+         $("#xiana").text('游记加载中..');
+        // b = b+5;
+       
+      $.post('{php echo $this->createMobileUrl('voindex',array('type'=>'uids'))}', { b: b,ww:ww ,feilei:'<?php echo $_GPC[feilei];?>'}, function(data)
+      {
+            
+      if (data)
+      {
+         
+     
+     	  //var li_1 = $("<ul class='wall"+b+"'>"+data+"</ul>");
+		 // $('.wrapper').append(li_1);
+		 // var h = $(".wall-column:eq(1)").height(); var n = $(".wall-column:eq(0)").height();
+          //$('.new-ul').append(data);
+		 // alert(h);alert(n);
+		 //  alert(typeof(data));
+		  $.each(data,function(nn,value){
+		         var h = $(".wall-column:eq(1)").height(); var n = $(".wall-column:eq(0)").height();
+				//  alert(h);alert(n);
+			//	alert(nn);
+			//	alert(value);
+			
+		
+					if(h>n){
+						$(".wall-column:eq(0)").append(value);
+					
+					}else{
+						  $(".wall-column:eq(1)").append(value);
+					
+					}
+				
+				}) 
+		   
+		  //$('.wall').jaliswall({ item: '.article' });	
+          $("#xiana").text('加载更多');
+          lock = false;
+          b = b+6;
+      }else
+      {
+
+          $("#xiana").text('加载完毕');
+
+      };
+
+         
+          }, "json");
+      });
+
+
+      })
+      
+</script>
+
+<script type="text/javascript">
+	   $(function()
+     {
+	
+	        $('#search-but').click(function()
+          {
+    					var t =  $('#search-inp').val();
+    					var reg1 = /^\s*[\u4e00-\u9fa5]{1,5}\s*$/;
+    					var result1 = reg1.test(t);
+    					
+    					var reg =/^\d{1,6}$/;
+    					var result = reg.test(t);
+					if(t == '')
+          { 
+					
+						  $('#loading').css('display','block');
+                           
+              $("#zui").css("margin","-"+$("#no").height()/2+"px 0 0 -"+$("#no").width()/2+"px");
+              $("#zui").show().html('请填写内容');
+
+                               
+                             
+          setTimeout(function()
+           {
+              $("#zui").css('display','none');
+              $('#loading').css('display','none');
+                              
+              
+           },2000);
+					
+					 }
+					else if (result1)
+          {
+						 document.getElementById("subt").click();    
+						
+					}else if(result)
+          {
+					   document.getElementById("subt").click();    
+					 
+					 
+					
+				  }else
+          {
+				    $('#loading').css('display','block');
+            $("#zui").css("margin","-"+$("#no").height()/2+"px 0 0 -"+$("#no").width()/2+"px");
+            $("#zui").show().html('请填写姓名或编号');
+
+                               
+                             
+          setTimeout(function()
+          {
+            $("#zui").css('display','none');
+            $('#loading').css('display','none');
+                              
+          },2000);
+				
+				  }	
+				
+			
+			   });
+	
+	  });
+
+
+
+
+</script>
+
+
+<script type="text/javascript">
+    function showCover()
+    {
+        $("#favor_weixin").show();
+        $("#wx-cover").show();
+    }
+    function hideCover()
+    {
+        $("#favor_weixin").hide();
+        $("#wx-cover").hide();
+    }
+
+	
+	
+	
+</script>
+
+
+
+{if $this->settings[0]['wode'] == 1}
+				  <style>
+					#bot ul li {
+						width: 20%;
+					  
+					}
+					</style>
+		{else}
+				<style>
+				#bot ul li {
+					width: 25%;
+				  
+				}
+				</style>
+		{/if}
+	  <style>
+		
+		#bot ul li {
+    width: 49%;
+}
+</style>
+
+	  <style>
+		
+		#bot ul li {
+    width: 49%;
+}
+
+#feilei{
+    position: fixed;
+    width: 49%;
+    /* height: 100px; */
+    background-color: #FFFFFF;
+    left: 0px;
+    bottom: 50px;
+    overflow: hidden;  display:none;background-color: #A59FAB;
+    color: #fff;
+
+
+}
+#feilei ul li{
+  text-align:center;
+  height:30px;
+  line-height:30px;
+
+
+
+}
+
+
+#feilei2{
+    position: fixed;
+    width: 49%;
+    /* height: 100px; */
+    background-color: #FFFFFF;
+    right: 0px;
+    bottom: 50px;
+    overflow: hidden;  display:none; background-color: #A59FAB;
+    color: #fff;
+
+
+}
+#feilei2 ul li{
+  text-align:center;
+  height:30px;
+  line-height:30px;
+
+
+
+}
+
+
+
+
+
+
+
+
+</style>
+<div id="feilei">
+       <ul>
+	   
+	   
+	   {loop $feilei $index $item}
+											<li onclick ="feilei({$item['id']})">{$item['name']}</li>
+													{/loop}
+	   </ul>
+
+
+</div>
+<div id="feilei2">
+       <ul>
+	   
+	   
+	   {loop $feilei $index $item}
+											<li onclick ="feilei2({$item['id']})">{$item['name']}</li>
+													{/loop}
+	   </ul>
+
+
+</div>
+<div id="bot">
+
+
+  <ul>
+	  <li id="clc">
+          <a href="#">
+            <i class="ico"></i>
+            <span>选择分类</span>
+          </a>
+          </li>
+		  
+		   <li id="cld">
+          <a href="#">
+            <i class="ico a2"></i>
+            <span>查看排名</span>
+          </a>
+          </li> 
+		  
+
+  </ul>
+
+
+
+       <div id="favor_weixin" ontouchstart="" onclick="hideCover()" style="opacity:1;-webkit-transition:opacity 200ms ease;transition:opacity 200ms ease;">
+			 <p id="float_knowed" class="abs c_txt">知道了</p>
+	   </div>
+</div>
+
+
+
+
+<script>
+
+  function feilei(id){
+		 
+		   		location.href = "<?php echo $this->createMobileUrl('Voindex')?>"+"&feilei=" + id;
+		 
+		 }
+
+  function feilei2(id){
+		 
+		   		location.href = "<?php echo $this->createMobileUrl('Chapai')?>"+"&feilei=" + id;
+		 
+		 }
+
+
+  $("#clc").click(function(){
+           
+                $("#feilei").toggle();
+  
+  
+  })
+
+ $("#cld").click(function(){
+           
+                $("#feilei2").toggle();
+  
+  
+  })
+
+
+</script>
+
+
+
+
+
+<script>
+	wx.ready(function () {
+		sharedata = {
+			title: '<?php
+			if($account['id']){
+			
+			    echo "我是".$account['id']."号选手".$account['name']."快来为我投上一票吧！";
+			
+			}else{
+			
+			    echo $this->settings[0]['fenxiangbiaoti'];
+			}
+			
+			?>',
+			desc: '<?php echo $this->settings[0]['fenxiangshuoming'];?>',
+			link: '',
+			imgUrl: '{php echo $this->settings[0][touimg]}',
+			success: function(){
+			
+				
+				$.post('{php echo $this->createMobileUrl('Fenxinajax',array('type'=>'uids'))}', function(data){
+							alert(data.a);
+						
+						 
+					},'json')
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			},
+			cancel: function(){
+				//alert('cancel');
+			}
+		};
+		wx.onMenuShareAppMessage(sharedata);
+		
+		
+		
+		wx.onMenuShareTimeline({
+					title: '<?php
+			if($account['id']){
+			
+			    echo "我是".$account['id']."号选手".$account['name']."快来为我投上一票吧！";
+			
+			}else{
+			
+			    echo $this->settings[0]['fenxiangbiaoti'];
+			}
+			
+			?>', // 分享标题
+					link: '', // 分享链接
+					imgUrl: '{php echo $this->settings[0][touimg]}', // 分享图标
+					success: function () { 
+						// 用户确认分享后执行的回调函数
+						$.post("{php echo $this->createMobileUrl('Fenxinajax',array('type'=>'uids'))}", function(data){
+							alert(data.a);
+						
+						 
+					},'json')
+						
+					},
+					cancel: function () { 
+						// 用户取消分享后执行的回调函数
+					}
+					
+				});
+	
+	
+	
+});
+	
+	
+	
+	
+	
+	
+	</script>
+</body></html>

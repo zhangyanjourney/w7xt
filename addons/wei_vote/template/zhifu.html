@@ -1,0 +1,171 @@
+{template 'common/header'}
+
+
+
+ <script>
+	     
+		   function fun(){
+				obj = document.getElementsByName("delete");
+				check_val = [];
+				for(k in obj){
+					if(obj[k].checked)
+						check_val.push(obj[k].value);
+				}
+				
+				
+				$.post("{php echo $this->createWebUrl('Delajaxuserlog', array())}", { "checkval": check_val },
+				function(data){
+				  
+				  
+				 //alert(data.msg); // John
+				  
+				  location.reload(); 
+
+				  console.log(data); //  2pm
+				  
+				  
+				  
+				  }, "json");
+						
+				
+				
+				
+			}
+		     
+		
+</script>
+  
+  
+
+  <div class="alert alert-info">
+	<i class="fa fa-info-circle"></i> 总金额：{$totaltotal}元（四舍五入到元）<br>
+	<strong class="text-danger">
+		<i class="fa fa-info-circle"></i> 支付数据：{$total}条<br>
+	</strong>
+</div>
+  
+  
+  
+  <form action="#" method="post" id="form1" class="ng-pristine ng-valid">
+	<div class="panel panel-default">
+	<div class="panel-body table-responsive">
+		<table class="table table-hover" style="width:100%;z-index:-10;" cellspacing="0" cellpadding="0">
+			<thead class="navbar-inner">
+				<tr>
+					<th class="text-left vertical-middle" style="width:30px;overflow:hidden;">删？</th>
+					<th class="text-left vertical-middle" style="width:30px;overflow:hidden;">ID</th>
+					
+					<th class="text-left vertical-middle" style="width:90px;overflow:hidden;">缩略图</th>
+				
+					<th class="text-left vertical-middle" style="width:90px;overflow:hidden;">选手编号</th>
+				
+					<th class="text-left vertical-middle" style="width:140px;overflow:hidden;">订单号</th>
+					<th class="text-left vertical-middle" style="width:70px;overflow:hidden;">是否支付</th>
+					<th class="text-left vertical-middle" style="width:40px;overflow:hidden;">礼物ID</th>
+			
+			<th class="text-left vertical-middle" style="width:40px;overflow:hidden;">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+			{loop $urs $i $item}
+				<tr>
+					   <td class="text-left vertical-middle"><input class="check-delete tagids-{$item['id']}" type="checkbox" name="delete" value="{$item['id']}" data-tagids="" data-openid="" data-fanid="{$item['id']}"></td>
+                    	<td class="text-left vertical-middle">{$item['id']}</td>				 
+					
+					
+					
+					<td class="text-left vertical-middle"><p><img src="{$item['avatar']}" width="48"></p><p>{$item['nickname']}</p></td>
+				
+					<td class="text-left vertical-middle"><p><span class="label label-success">编号:{$item['bianhao']}</span></p><p><span class="label label-success">{if $item['jiner'] == $item['wxfee'] || $item['wxfee']==0 }金额{else}异常支付{/if}:{$item['jiner']}</span></p></td>
+					
+					<td class="text-left vertical-middle">
+					
+					      <p>订单号：<span>{$item['dingdanghao']}</span></p> 
+                      	  <p>交易时间：<span><?php echo date("Y-m-d H:i:s",$item['createtime']);?></span></p> 
+						  <p>交易订号：<span>{$item['wxtransaction_id']}</span></p>
+						   <p>商户单号：<span>{$item['wxuniontid']}</span></p>
+						   
+					
+					</td>
+					<td class="tag-show-15956 text-left vertical-middle">
+					 <p> {if $item['isxuli'] ==1}
+						<span class="label label-danger">用户支付</span>
+						{elseif $item['isxuli'] == 2}
+						<span class="label label-success">管理支付</span>
+						{else}
+						<span class="label label-danger">特殊</span>
+						{/if}
+					</p>
+					 <p> {if $item['iszhifu'] ==0}
+						<span class="label label-danger">未支付</span>
+						{elseif $item['iszhifu'] == 2}
+						<span class="label label-success">支付成功 </span>
+						{else}
+						<span class="label label-danger">特殊</span>
+						{/if}
+					</p>
+					 <p>
+					 
+					  {if $item['type'] =='wechat'}
+						<span class="label label-success">微信支付</span>
+						{elseif $item['type'] == 'credit'}
+						<span class="label label-primary">余额 </span>
+					{elseif $item['type'] == 'JSAPI'}
+						<span class="label label-info">微信支付 </span>
+						{elseif $item['type'] == 'alipay'}
+						<span class="label label-info">支付宝 </span>
+						{elseif $item['type'] == 'unionpay'}
+						<span class="label label-warning">银联 </span>
+						{elseif $item['type'] == 'baifubao'}
+						<span class="label  label-default">百度钱包 </span>
+						{else}
+						<span class="label label-danger">特殊</span>
+						{/if}
+					 
+					</p>
+					</td>
+				
+						<td class="text-left vertical-middle">
+						     <!-- <p><span class="label label-success">礼物ID:{$item['liwuid']}</span></p> -->
+							  <p><span class="label label-success">增加票数:{$item['piao']}</span></p>
+							   <p><span class="label label-success">购买数量:{$item['shuliang']}</span></p>
+					
+						
+						</td>
+						
+					<td class="text-right text-left vertical-middle" style="overflow:visible;">
+				
+						<a href="{php echo $this->createWebUrl('Zhifu', array('id' => $item['id'], 'op' => 'del', 'hdid' => $_GPC['hdid']))}" class="btn btn-default btn-sm">删除</a>
+					</td>
+				</tr> {/loop}
+				
+							</tbody>
+		</table>
+		<table class="table table-hover">
+			<tbody><tr>
+				<td width="30">
+					<input type="checkbox" onclick="var ck = this.checked;$('.check-delete').each(function(){this.checked = ck});">
+				</td>
+				<td class="text-left">
+					<input name="token" type="hidden" value="747068bb">
+					<input type="submit" name="submit" class="btn btn-primary span2" onclick="fun()" value="删除"> &nbsp; 
+			
+					</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<span class="help-block">通过: #</span>
+				
+				</td>
+			</tr>
+		</tbody></table>
+	</div>
+	</div>
+	<div class="footactions" style="padding-left:10px">
+		<div class="pages" style="text-align:right;">{$pager}</div>
+			</div></form>
+  
+
+  
+  
+{template 'common/footer'}

@@ -1,0 +1,355 @@
+
+
+{if $this->settings[0]['wode'] == 1}
+				  <style>
+					#bot ul li {
+						width: 20%;
+					  
+					}
+					</style>
+		{else}
+				<style>
+				#bot ul li {
+					width: 25%;
+				  
+				}
+				</style>
+		{/if}
+
+<div id="bot">
+
+      <ul>
+	  <li>
+	 
+          <a href="
+		     <?php
+			   
+			  if($this->settings[0]['ischouqian']== 1){
+				   echo $this->createMobileUrl('Chouqiang',array('hdid'=>$_GPC['hdid'])); 
+				}else{
+				 echo $this->createMobileUrl('Xianqing',array('hdid'=>$_GPC['hdid'])); 
+				}
+			 
+			 ?>
+		  
+		  
+		  ">
+            <i class="ico a4"></i>
+            <span> <?php
+			    if($this->settings[0]['ischouqian']== 1){
+				   echo '抽奖'; 
+				}else{
+				  echo '详情'; 
+				}
+			 
+			 
+			 ?></span>
+          </a>
+        </li>
+		
+		{if $this->settings[0]['wode'] == 1}
+          <li>
+          <a href="{php echo $this->createMobileUrl('Index',array('hdid'=>$_GPC['hdid']))}">
+            <i class="ico"></i>
+            <span>我的</span>
+          </a>
+          </li>
+		{else}
+
+		{/if}
+		
+      
+        <li><a href="{php echo $this->createMobileUrl('voindex',array('hdid'=>$_GPC['hdid']))}">
+          <i class="ico a1"></i>
+          <span>投票</span></a>
+        </li>
+        <li><a href="{php echo $this->createMobileUrl('weiindex',array('hdid'=>$_GPC['hdid']))}">
+          <i class="ico a2"></i>
+          <span>参赛</span></a>
+        </li>
+		
+		
+		
+		
+		
+		
+		
+       <li>
+	       {if $this->settings[0]['fenxianurl'] == ''}
+			
+			   <a href="javascript:;" ontouchstart="" onclick="javascript:showCover();">
+		
+		  {else}
+				
+			   <a href="{php echo $this->settings[0]['fenxianurl']}" ontouchstart="">
+			
+		  {/if}
+	    
+          <i class="ico a3"></i>
+          {if $this->settings[0]['fenxian'] == ''}
+			
+			  <span>分享</span>
+		
+		  {else}
+				
+			  <span>{php echo $this->settings[0]['fenxian']}</span>
+			
+		  {/if}
+		  
+		  </a>
+        </li>
+      </ul>
+       <div id="favor_weixin" ontouchstart="" onclick="hideCover()" style="opacity:1;-webkit-transition:opacity 200ms ease;transition:opacity 200ms ease;">
+			 <p id="float_knowed" class="abs c_txt">知道了</p>
+	   </div>
+</div>
+
+
+<script>
+
+
+	wx.ready(function () {
+		sharedata = {
+			title: '<?php
+			if($account['bh']){
+			
+			    echo $this->settings[0]['fenxiangbiaotitp'];
+			
+			}else{
+			
+			    echo $this->settings[0]['fenxiangbiaoti'];
+			}
+			
+			?>',
+			desc: '<?php echo $this->settings[0]['fenxiangshuoming'];?>',
+			link: '',
+			imgUrl: '{php echo $this->settings[0][touimg]}',
+			success: function(){
+			
+				
+				$.post('{php echo $this->createMobileUrl('Fenxinajax',array('hdid'=>$_GPC['hdid']))}', function(data){
+							alert(data.a);
+						
+						 
+					},'json')
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			},
+			cancel: function(){
+				//alert('cancel');
+			}
+		};
+		wx.onMenuShareAppMessage(sharedata);
+		
+		
+		
+		wx.onMenuShareTimeline({
+					title: '<?php
+			if($account['bh']){
+			
+			    echo $this->settings[0]['fenxiangbiaotitp'];
+			
+			}else{
+			
+			    echo $this->settings[0]['fenxiangbiaoti'];
+			}
+			
+			?>', // 分享标题
+					link: '', // 分享链接
+					imgUrl: '{php echo $this->settings[0][touimg]}', // 分享图标
+					success: function () { 
+						// 用户确认分享后执行的回调函数
+						$.post("{php echo $this->createMobileUrl('Fenxinajax',array('hdid'=>$_GPC['hdid']))}", function(data){
+							alert(data.a);
+						
+						 
+					},'json')
+						
+					},
+					cancel: function () { 
+						// 用户取消分享后执行的回调函数
+					}
+					
+				});
+	
+	
+	
+});
+	
+	
+	
+	
+	
+	
+	</script>
+	
+	
+	<style>
+	       #audio_btn {
+				position: fixed;
+				right: 10px;
+				top: 55px;
+				z-index: 200;
+				display: none;
+				width: 50px;
+				height: 50px;
+				background-repeat: no-repeat;
+		
+			}
+			
+			.off {
+				background: url(../../addons/wei_vote/template/style/images/music_off.png);
+				background-size: 30px 30px;
+			}
+			
+			.play_yinfu {
+    background-image: url(../../addons/wei_vote/template/style/images/music.gif);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 60px 60px;
+}
+
+
+.rotate1 {
+    left: 10px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    background-size: 100% 100%;
+    background-image: url(../../addons/wei_vote/template/style/images/music_off.png);
+    -webkit-animation: rotating 1.2s linear infinite;
+    -moz-animation: rotating 1.2s linear infinite;
+    -o-animation: rotating 1.2s linear infinite;
+    animation: rotating 1.2s linear infinite;
+	
+	
+	
+	 
+
+}
+
+#yinfu{
+    background-image: url(../../addons/wei_vote/template/style/images/music_off.png);
+	
+	left: 10px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    background-size: 100% 100%;
+	
+	
+}
+
+.rotate1 {
+     -webkit-animation: rotating 1.2s linear infinite;
+     -moz-animation: rotating 1.2s linear infinite;
+     -o-animation: rotating 1.2s linear infinite;
+     animation: rotating 1.2s linear infinite
+ }
+ 
+ @-webkit-keyframes rotating {
+    from { -webkit-transform: rotate(0) }
+     to { -webkit-transform: rotate(360deg) }
+ }
+ 
+ @keyframes rotating {
+     from { transform: rotate(0) }
+    to { transform: rotate(360deg) }
+ }
+@-moz-keyframes rotating {
+     from { -moz-transform: rotate(0) }
+     to { -moz-transform: rotate(360deg) }
+ }
+
+	
+	</style>
+	
+	{if $this->settings[0]['audio'] == ''}
+
+	{else}
+
+		<div class="video_exist play_yinfu" id="audio_btn" style="display: block;">
+		
+		
+			<div id="yinfu" class="rotate1"></div>
+
+		   
+		  <audio preload="auto" autoplay="autoplay" id="media" src="<?php echo tomedia($this->settings[0]['audio']);?>" loop=""></audio> 
+		 
+		
+	</div>
+		
+
+	{/if}
+		
+	
+	
+
+	
+<script>
+
+ var x = document.getElementById("media"); 
+$("#yinfu").click(function(){
+ 
+	 $(this).toggleClass("rotate1"); //控制音乐图标 自转或暂停
+	 
+	 
+	  //控制背景音乐 播放或暂停            
+         if($(this).hasClass("rotate1")){
+            x.play();
+        }else{
+            x.pause();
+        }
+	 
+	 
+ })
+
+$("#audio_btn").click(function(){
+
+   $(this).toggleClass("play_yinfu"); //控制音乐图标 自转或暂停
+ 
+	 
+ })
+ 
+ $(function(){
+ 
+		 function audioAutoPlay(id){
+			var audio = document.getElementById(id);
+			if(audio != null){
+			      audio.play(); 
+			}
+			console.log(audio);
+			
+			document.addEventListener("WeixinJSBridgeReady", function () {
+					if(audio != null){
+						  audio.play(); 
+					}
+			}, false);
+		}
+		audioAutoPlay('media');
+ 
+ 
+ })
+
+</script>	
+	
+</body></html>

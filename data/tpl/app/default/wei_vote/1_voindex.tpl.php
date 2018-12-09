@@ -1,0 +1,809 @@
+<?php defined('IN_IA') or exit('Access Denied');?><?php (!empty($this) && $this instanceof WeModuleSite) ? (include $this->template('common_head_top', TEMPLATE_INCLUDEPATH)) : (include template('common_head_top', TEMPLATE_INCLUDEPATH));?>	
+<script type="text/javascript" src="<?php  echo $_W['siteroot'];?>app/resource/js/lib/mui.min.js?v=20170802"></script>
+
+
+	<link href="<?php  echo $_W['siteroot'];?>app/resource/css/common.min.css?v=20170802" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="<?php echo TEMPLATE_PATH;?>css/conn.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo TEMPLATE_PATH;?>css/rank.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo TEMPLATE_PATH;?>js/sweetalert.css">
+  <script type="text/javascript" src="<?php echo TEMPLATE_PATH;?>js/jquery-1.8.3.min.js"></script>
+   <script type="text/javascript" src="<?php echo TEMPLATE_PATH;?>js/sweetalert.min.js"></script>
+
+   <style>
+
+.rank-lt-d img {
+   
+   
+    border-radius: 100%;
+}
+
+@media (max-width: 474px){
+
+	.rank-lt .rank-lt-s {
+		width: 25px;
+		height: 25px;
+		margin: 8px;
+		line-height: 20px;
+	}
+	.rank-lt-d {
+		width: 40px;
+		height: 40px;
+	}
+	.bg1, .bg2, .bg3 {
+		background-size: 180%;
+		top: 3px;
+		    left: 22px;
+		height: 20px;
+		width: 20px;
+		background-position: -17px 6px;
+	}
+	
+	.rank-lt {
+		width: 180px;
+		height: 60px;
+	}
+	
+	.rank-rt {
+    width: 100px;
+    color: red;
+}
+}
+
+
+
+
+
+
+
+#no, #lian-no, #shouno, #feifano, #zui {
+    display: none;
+    color: #F00;
+    position: fixed;
+    left: 50%;
+    top: 40%;
+    z-index: 2;
+    width: 218px;
+    height: 100px;
+    border-radius: 8px;
+    margin: -64px 0 0 -114px;
+    line-height: 100px;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+    opacity: 0.9;
+    background: #3A3232;
+}
+
+
+.rotate {
+     -webkit-animation: rotating 1.2s linear infinite;
+     -moz-animation: rotating 1.2s linear infinite;
+     -o-animation: rotating 1.2s linear infinite;
+     animation: rotating 1.2s linear infinite
+ }
+ 
+ @-webkit-keyframes rotating {
+    from { -webkit-transform: rotate(0) }
+     to { -webkit-transform: rotate(360deg) }
+ }
+ 
+ @keyframes rotating {
+     from { transform: rotate(0) }
+    to { transform: rotate(360deg) }
+ }
+@-moz-keyframes rotating {
+     from { -moz-transform: rotate(0) }
+     to { -moz-transform: rotate(360deg) }
+ }
+
+
+@media (max-width: 474px){
+#search-spa {
+    width: 80px;
+    line-height: 35px;
+    height: 35px;
+}
+
+}
+
+
+   </style>
+   <script type="text/javascript">
+
+        var latitude = 0;
+		var longitude = 0;
+        wx.ready(function () {
+							wx.getLocation({
+								type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+								success: function (res) {
+									latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+									longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+									var speed = res.speed; // 速度，以米/每秒计
+									var accuracy = res.accuracy; // 位置精度
+									//alert(latitude);
+								},
+								cancel: function (res) {
+									alert('用户拒绝授权获取地理位置');
+									//location.reload(); 
+
+								}
+							});
+
+					});
+        function toupiao(k,od,inputValue){
+		  
+		            //var lang = "Java";
+                    lang = ".p_"+k;
+		            
+					
+		            $.post('<?php  echo $this->createMobileUrl('listajax',array('type'=>'uids'))?>', { hdid:<?php  echo $_GPC['hdid']?>,p: k,latitude:latitude,longitude:longitude,od:od,inputValue:inputValue }, function(data){
+                    if(data.b){
+					   $(lang).html(data.b+'票');
+					    <?php  if(!empty($this->settings[0]['advimg'])) { ?>
+					      swal.close();
+						  var mask = mui.createMask(call);
+                          mask.show();//显示遮罩
+					      $(".zhe").show();
+						  $("#test").attr("vid",k) // 设置
+					      $(".votets").html(data.a);return;
+					
+						<?php  } ?>
+					}
+						 
+					if (data == '')
+					{
+					
+							swal({   title: "'公众号:'+$_W['account']['account']",   text: "今日投票数以用完！",   timer: 4000 });
+							
+					}else
+					{
+							
+							
+							swal(data.a);
+							
+							
+							if(data.c==1){
+							
+							
+							<?php  if($this->settings[0]['keyword'] == '') { ?>
+							
+							
+							
+							      swal({    title: "",   text: "<div id ='guanzhu' style='width:250px;height:250px;text-align:center;margin:0px auto;'> <img src='<?php  echo $_W['account']['qrcode'];?>'><p style='text-align:center;'>请关注公众号，回复投票进入活动</p></div>",    html: true  });
+							
+							
+							<?php  } else { ?>
+							
+						
+							    setTimeout(function(){
+				   
+				                   window.location.href="<?php  echo $this->settings[0]['keyword'];?>";
+							    },2000)
+
+			
+							
+							
+							<?php  } ?>
+							
+						
+							
+							
+							
+							
+							
+							}
+							if(data.c==4){
+							    setTimeout(function(){
+				   
+				                   window.location.href="<?php  echo $this->createMobileUrl('Chouqiang',array('hdid'=>$_GPC['hdid']))?>";
+							    },2000)
+
+							}
+							
+							
+							
+					};
+						 
+					},'json')
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		}
+	function toupiao2(k,od){
+                    swal({
+                        title: "",
+                        text: "<img id='toggle' class='imgverify' src='<?php  echo $this->createMobileUrl('Codeyz',array('hdid'=>$_GPC['hdid']))?>&r="+Math.round(new Date().getTime())+"'>",
+                        type: "input",
+					    confirmButtonText:"确认",
+						confirmButtonColor:"#f60",
+						cancelButtonText:"取消",
+						 html: true,
+                        showCancelButton: true,
+                        closeOnConfirm: false,
+                        animation: "slide-from-top",
+                        inputPlaceholder: "请填写上面的验证码"
+                    }, function(inputValue) {
+                        if (inputValue === false)
+                            return false;
+                        if (inputValue === "") {
+                            swal.showInputError("请输入!");
+                            return false
+                        }
+                       toupiao(k,od,inputValue); //swal("棒极了!", "您填写的是: " + inputValue, "success");
+                       //swal.close();
+				   });
+					
+    }
+
+
+</script>
+<script>
+   $('#toggle').click(function() {
+    alert('ok');
+	$('.imgverify').prop('src', "<?php  echo $this->createMobileUrl('code')?>&r="+Math.round(new Date().getTime()));
+	return false;
+});	
+
+
+</script>
+  <style type="text/css">
+       #xiana
+       {
+           margin-bottom: 60px;
+		   text-align: center;
+		  
+		   /*margin-top: 10px;*/
+		   height: 40px;
+		   line-height: 40px;
+		       background: #04BE02;color: #FFFFFF;    border-radius: 5px; background: #FF6600;
+       }
+       #xiana a{
+      color: #FFFFFF;
+       }
+     
+      #subt{
+      display:none;
+      }
+      #zui{
+
+        display:none;
+        color:#F00;
+
+
+        position: fixed;
+        left: 50%;
+        top: 40%;
+        z-index: 2;
+        width: 218px;
+        height: 100px;
+        border-radius: 8px;
+        margin: -64px 0 0 -114px;
+        background: #888888;
+        line-height: 100px;
+        text-align: center;
+        font-size: 12px;
+        color: #fff;
+
+        
+      }
+	  
+	#new{
+	overflow: hidden;
+	}  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+.wall {
+  display: block;
+  position: relative;
+}
+.wall-column {
+  display: block;
+  position: relative;
+  width: 50%;
+  float: left;
+  padding: 0 1%;
+  box-sizing: border-box;
+}
+.article {
+  display: block;
+  margin: 0 0 8% 0;
+  padding: 5%;
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  transition: all 100;
+  overflow: hidden;
+  position: relative;
+}
+.article:hover{ transform: scale(1.01);}
+.article img {
+  display: block;
+  width: 100%;
+  margin: 0 0 5% 0;
+}
+.article a{ color: #666;}
+.article p{ overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 70%; font-size: 1.2em; line-height: 1.5;}
+.article small{ font-size: 1em; color: #ff0000; line-height: 1.5;}
+.article input{ box-sizing: content-box;width: 20%; padding: 0.6em; border-radius: 0.4em; font-size: 12px; z-index: 100; background-color: #f60; border: none; position: absolute; bottom: 3%; right: 5%; color: #fff; box-shadow: 0 0 7px #d7d7d7;}
+/*瀑布流结束*/
+.wrapper h3{ text-align: center; margin:0 20%; white-space: nowrap; text-overflow: ellipsis; font-weight:normal; color: #333; overflow: hidden;  font-size: 1.5em; padding: 0.7em 0;}
+.wrapper h4{ width: 90%; margin:0 5%; text-align: justify; font-weight:normal; color: #999;  font-size: 1.2em; margin-bottom: 3%; line-height:1.5; }
+.pd{
+
+    padding: 0 10px;
+}
+
+
+.article i {
+    position: absolute;
+   top: 10px;
+    left: 10px;
+    width: 54px;
+    height: 25px;
+    line-height: 27px;
+    text-align: center;
+    color: #fff;
+    z-index: 99;
+    background: rgba(0,0,0,.6);
+    font-style: normal;
+}
+#jiaz {
+
+    background: #f60;
+   
+}
+#canyu span.canyu-sp2 {
+    background: #f25959;
+  background: #f60;
+}
+
+
+.dingwen{
+    position: fixed;
+    top: 25%;
+    right: 10%;
+    z-index: 2000;
+    width: 80%;
+    background: #FFF;
+    border-radius: 5px;
+    border: 10px solid #fff;
+  <!-- background:red; -->
+
+
+}
+
+.votets {
+    position: fixed;
+    top: 10%;
+    z-index: 2000;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    text-shadow: 0 2px 3px #000;
+}
+
+.mui-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 998;
+    background-color: rgba(0,0,0,.5);
+}
+  </style>
+</head>
+<body>
+
+<style>
+  .gdt{
+				
+					position: fixed; z-index: 999; top: 0; left: 0; width: 100%; text-align: center; padding: 6px 10px; border: 1px solid transparent; color: #FFFFFF; background-color: rgba(0, 0, 0, 0.5);
+				}
+			
+		</style>
+			
+			 <?php  if(!empty($this->settings[0]['gdgg'])) { ?>
+				
+				
+				<div class="gdt">
+					<span class=""><marquee direction="left"><?php  echo $this->settings[0]['gdgg']?></marquee></span>
+				</div>
+			<?php  } ?>
+
+
+
+
+
+
+
+<?php (!empty($this) && $this instanceof WeModuleSite) ? (include $this->template('common_head', TEMPLATE_INCLUDEPATH)) : (include template('common_head', TEMPLATE_INCLUDEPATH));?>
+
+<script>
+
+
+
+function call(){
+var mask = mui.createMask();//callback为用户点击蒙版时自动执行的回调；
+mask.close();//关闭遮罩
+					   $(".zhe").hide();
+}
+</script>
+<script>
+function cli(){
+
+   var vid = $("#test").attr("vid"); // 设置
+   window.location.href = "<?php  echo $this->settings[0]['advurl']?>&hdid=<?php  echo $_GPC['hdid'];?>&id="+vid;
+
+}
+
+</script>
+<div class="zhe" style="display:none">
+	<div class="voteadd dingwen" id="test" vid ="" onclick="cli()">
+		<img src="<?php  echo tomedia($this->settings[0]['advimg'])?>" class="adimg" width="100%">
+		<p class="adtext"><?php  echo $this->settings[0]['advwenzi']?></p>
+	</div>
+
+	<div class="votets ">投票成功，今天您还可以投5票。</div>
+</div>
+    <div id="search" class="w">
+        <div class="search-1">
+              <form id="fo1" action="<?php  echo $this->createMobileUrl('so',array('hdid'=>$_GPC['hdid']))?>" method="post">
+                 <input id="search-inp" type="search" name="name" placeholder="按<?php  echo $this->settings[0]['xingming']?>或者编号搜索" value="">
+                
+                 <span id="search-but">搜索</span>
+				         <input type="submit" value="name" id="subt">
+
+              </form>   
+              <span id="search-spa"><a href="<?php  echo $this->createMobileUrl('weiindex',array('hdid'=>$_GPC['hdid']))?>">我要参与</a></span>
+        </div>
+    </div>
+    <div id="canyu">
+      <span class="canyu-sp2">最新参加</span><span class="">最热排名</span>
+    </div>
+ 
+                                  
+    <div id="wsp">
+              <div id="rank-1" class="one" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">
+                 
+                            <ul class="lie">
+                                 
+										<?php  if(is_array($res)) { foreach($res as $i => $item) { ?>
+										<li class="rank-1-li">
+                                            <a href="<?php  echo $this->createMobileUrl('list',array('type'=>'uids','id'=>$item['id'],'hdid'=>$_GPC['hdid']))?>">
+                                                  <div class="rank-lt">
+                                                      <span class="rank-lt-s hs"><?php  echo $i+1; ?><i class="bg<?php  echo $i+1; ?>"></i></span>
+                                                        <?php 
+															$item['tupian'] = str_replace("&quot;","",$item['tupian']);
+														        $item['tupian'] =  htmlspecialchars_decode($item['tupian']);
+														        $item['tupian'] = stripslashes($item['tupian']);
+														        $he = (explode(",",$item['tupian'])); 
+                                                                $f = $he['0'];
+                                                
+														?>
+                                                       <div class="rank-lt-d"><img src="<?php  echo tomedia($f);?>"></div>
+                                                        <div class="rank-lt-w">
+                                                          <p class="rank-lt-p1"><?php  echo $item['name'];?></p>
+                                                          <p class="rank-lt-p2">投票编号：<strong class="s1"><?php  echo $item['bh'];?></strong></p>
+                                                        </div>
+                                                  </div>
+                                                  <div class="rank-rt">
+                                                   
+                                                      <?php 
+								 if($item['piao']>999){
+								   
+									 $mx = $item['piao']%999;
+									 $zx = floor($item['piao']/999);
+									 
+									 echo " <img src='".$_W['siteroot']."addons/wei_vote/template/style/images/1.png'>".$item['piao']."";
+								 }else{
+								     $mx = $item['piao'];
+									 $zx = 0;
+								  echo " <img src='".$_W['siteroot']."addons/wei_vote/template/style/images/1.png'>".$item['piao']."";
+								 }
+							 
+							 
+							 ?>
+                                                  </div>
+                                            </a>
+                                        </li>
+										<?php  } } ?>
+										
+                            </ul>
+                
+              <div id="jiaz">
+                   点击加载更多...
+               </div>
+    </div>
+    <div id="new-list" class="one" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1); ">
+   
+           <div id="new">
+               <div class="wrapper">
+							<ul class="wall new-ul">
+							<?php  if(is_array($nes)) { foreach($nes as $i => $item) { ?>
+							<li class="article">
+							<?php 
+														$item['tupian'] = str_replace("&quot;","",$item['tupian']);
+														        $item['tupian'] =  htmlspecialchars_decode($item['tupian']);
+														        $item['tupian'] = stripslashes($item['tupian']);
+														        $he = (explode(",",$item['tupian'])); 
+                                                                $f = $he['0'];
+                                                       
+														?>
+									<a href="<?php  echo $this->createMobileUrl('list',array('type'=>'uids','id'=>$item['id'],'hdid'=>$_GPC['hdid']))?>">
+										<img src="<?php  echo tomedia($f);?>" /></a>
+									    <p><?php  echo $item['name'];?></p>
+										<small class ="p_<?php  echo $item['id'];?>"><?php  echo $item['piao'];?>票</small>
+										<?php  if($this->settings['0']['yaz'] == 1) { ?>
+									       <input class ="toupiao" onclick="toupiao2(<?php  echo $item['id'];?>,'<?php  echo $_W['openid'];?>')" type="button" value="投票" />
+								
+										<?php  } else { ?>
+										<input class ="toupiao" onclick="toupiao(<?php  echo $item['id'];?>,'<?php  echo $_W['openid'];?>')" type="button" value="投票" />
+								
+										<?php  } ?>
+										
+
+                                    <i><?php  echo $item['bh'];?>号</i>								
+								</li>
+								<?php  } } ?>	
+								
+							</ul>
+						</div>
+           </div>
+          
+            <!--  -->
+			<div class ="pd">
+				<div id="xiana">
+						点击加载更多...
+				   </div>
+			
+			</div>
+              
+      
+  </div>
+</div>
+<span id="no" class="ok1"></span>
+<span id="zui" class="ok1"></span>
+<div id="loading" style="position:fixed;display:none;z-index:2000;top:0px;left:0px;width:100%;height:100%;background-color:rgba(0, 0, 0, 0.2);"></div>
+<script type="text/javascript" src="<?php echo TEMPLATE_PATH;?>js/jaliswall.js"></script>
+<script type="text/javascript">
+	$(function(){
+	 
+		$('.wall').jaliswall({ item: '.article' });
+	});
+</script>
+<script type="text/javascript">
+     $(function()
+     {
+		 <!-- $('#canyu span').on("tap",function() -->
+		 $('#canyu span').on("click",function()
+		 {
+			var m = $(this).index();
+			$('#canyu span').removeClass('canyu-sp2');
+			$('#canyu span').eq(m).addClass('canyu-sp2');
+			//$('#wsp .one').hide()
+			//$('#wsp .one').eq(m).show();
+			$('#wsp .one').show();
+			$('#wsp .one').eq(m).hide();
+		})
+		
+		
+		
+	
+	})
+</script>
+
+
+<script type="text/javascript">
+$(function(){
+
+
+          var p = 5, lock = false;
+      $("#jiaz").on('click', function (e)
+      {
+          e.preventDefault();
+      if (lock)
+      {
+          return;
+      }
+          lock = true;
+      $("#jiaz").text('加载中..');
+          p = p+5;
+	 var hdid = '<?php  echo $_GPC['hdid'];?>';
+      $.post('<?php  echo $this->createMobileUrl('voindex',array('type'=>'uids'))?>', { hdid:hdid,p: p }, function(data)
+      {
+	          // data = eval('(' + data + ')');;
+           
+      if (data)
+      {
+           console.log(data);
+          $('.lie').append(data);
+          $("#jiaz").text('加载更多');
+          lock = false;
+
+      }else
+      {
+
+         $("#jiaz").text('加载完毕');
+
+      };
+
+         
+      });
+      });
+
+
+
+
+
+
+
+
+})
+ 
+</script>
+
+
+<script type="text/javascript">
+
+
+
+$(function(){
+
+         var b = 10, lock = false;
+      $("#xiana").on('click', function (e)
+      {	
+	var ww = $(".article:eq(0) img").width();
+	//  alert($(".article:eq(0) img").height());
+         e.preventDefault();
+      if (lock)
+      {
+         return;
+      }
+         lock = true;
+         $("#xiana").text('加载中..');
+        // b = b+5;
+        var hdid = '<?php  echo $_GPC['hdid'];?>';
+      $.post('<?php  echo $this->createMobileUrl('voindex',array('type'=>'uids'))?>', { hdid:hdid,b: b,ww:ww }, function(data)
+      {
+            
+      if (data)
+      {
+         
+     
+     	
+		 console.log(data);
+		  $.each(data,function(nn,value){
+		         var h = $(".wall-column:eq(1)").height(); var n = $(".wall-column:eq(0)").height();
+			
+					if(h>n){
+						$(".wall-column:eq(0)").append(value);
+					
+					}else{
+						  $(".wall-column:eq(1)").append(value);
+					
+					}
+				
+				}) 
+		   
+		 
+          $("#xiana").text('加载更多');
+          lock = false;
+          b = b+6;
+      }else
+      {
+
+          $("#xiana").text('加载完毕');
+
+      };
+
+         
+          }, "json");
+      });
+
+
+      })
+      
+</script>
+
+<script type="text/javascript">
+	   $(function()
+     {
+	
+	        $('#search-but').click(function()
+          {
+    					var t =  $('#search-inp').val();
+    					var reg1 = /^\s*[\u4e00-\u9fa5]{1,5}\s*$/;
+    					var result1 = reg1.test(t);
+    					
+    					var reg =/^\d{1,6}$/;
+    					var result = reg.test(t);
+					if(t == '')
+          { 
+					
+						  $('#loading').css('display','block');
+                           
+              $("#zui").css("margin","-"+$("#no").height()/2+"px 0 0 -"+$("#no").width()/2+"px");
+              $("#zui").show().html('请填写内容');
+
+                               
+                             
+          setTimeout(function()
+           {
+              $("#zui").css('display','none');
+              $('#loading').css('display','none');
+                              
+              
+           },2000);
+					
+					 }
+					else if (result1)
+          {
+						 document.getElementById("subt").click();    
+						
+					}else if(result)
+          {
+					   document.getElementById("subt").click();    
+					 
+					 
+					
+				  }else
+          {
+				    $('#loading').css('display','block');
+            $("#zui").css("margin","-"+$("#no").height()/2+"px 0 0 -"+$("#no").width()/2+"px");
+            $("#zui").show().html('请填写名称或编号');
+
+                               
+                             
+          setTimeout(function()
+          {
+            $("#zui").css('display','none');
+            $('#loading').css('display','none');
+                              
+          },2000);
+				
+				  }	
+				
+			
+			   });
+	
+	  });
+
+
+
+
+</script>
+
+
+<script type="text/javascript">
+    function showCover()
+    {
+        $("#favor_weixin").show();
+        $("#wx-cover").show();
+    }
+    function hideCover()
+    {
+        $("#favor_weixin").hide();
+        $("#wx-cover").hide();
+    }
+
+	
+	
+	
+</script>
+
+
+
+<?php (!empty($this) && $this instanceof WeModuleSite) ? (include $this->template('common_foot', TEMPLATE_INCLUDEPATH)) : (include template('common_foot', TEMPLATE_INCLUDEPATH));?>

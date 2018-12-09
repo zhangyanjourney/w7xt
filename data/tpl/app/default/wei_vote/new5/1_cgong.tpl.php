@@ -1,0 +1,82 @@
+<?php defined('IN_IA') or exit('Access Denied');?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+        
+        <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <title>投票成功</title>
+                <meta name="apple-mobile-web-app-capable" content="yes">
+                <meta name="apple-mobile-web-app-status-bar-style" content="black">
+                <meta name="format-detection" content="telephone=no">
+                <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=no" />-->
+                <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+                   <link rel="stylesheet" type="text/css" href="<?php echo TEMPLATE_PATH;?>new5/style.css">
+                <link rel="stylesheet" type="text/css" href="<?php echo TEMPLATE_PATH;?>new5/style_PageDefault.css">
+                <link rel="stylesheet" type="text/css" href="<?php echo TEMPLATE_PATH;?>new5/style_PageMaster.css">
+                <link rel="stylesheet" type="text/css" href="<?php echo TEMPLATE_PATH;?>new5/swipe.css">
+         
+                <link rel="stylesheet" type="text/css" href="<?php echo TEMPLATE_PATH;?>new5/zqa.css">
+				<script type="text/javascript" src="<?php echo TEMPLATE_PATH;?>js/jquery-1.8.3.min.js"></script>
+                <style>.share {display: none;position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.7);z-index: 9696969;} #babydiv2{overflow: scroll;height: 500px;} #row{border-top:1px #ccc solid;} .fl{float:left;} .all{border-left:2px #DE3031 solid;font-size: 16px;} .all span{float:right;font-size: 12px;margin-right:20px;} .mleft{width:20%;padding:0px 0px 3px 2%;} .mright{width:74%;padding:0px 2%;} .row2{border-bottom:1px #ccc solid;padding: 6px 0; text-align:left;} .mtop{color:#757575;font-size: 16px;} .mbot{color:#9a9a9a;font-size: 14px;} .hui{height:20px;background-color:#F7F6F4;} .tright{width:15%;float:right;color:#b2b295;font-size: 17px;} .tleft{width:73%;float:left;padding:0px 0px 3px 6%;} .tttop{color:#9a9a9a;font-size: 14px;} .tbot{color:#424242;font-size: 17px;} .guanzhu{font-size: 16px;padding-bottom: 30px;} .row3{width:29%;border-bottom:1px #ccc solid;border-right:1px #ccc solid;padding:2%;} #body{background-color:#fff;}</style></head>
+        
+        <body id="body">
+                <div id="div">
+                        <!--内容 -->
+                        <div id="alert">给<?php  echo $vote_up['bh'];?>号投票成功</div>
+						
+							<?php  if($this->settings[0]['isliwu'] == 1) { ?>
+								<div>
+								<img width="60px" src="<?php echo TEMPLATE_PATH;?>new5/zuanshi_03.png"></div>
+								<div style="text-align:center;font-size:16px;">亲，再送我个钻石呗！</div>
+								
+								<div style="background-color: #ffa603;border:solid 1px #000;" id="zbtn">
+										<a href="<?php  echo $this->createMobileUrl('wulist',array('id'=>$_GPC['id'],'hdid'=>$_GPC['hdid']))?>" style="font-size:18px;width: 100%;display: block;">送钻石</a>
+								</div>
+                       
+							<?php  } ?>
+						
+						
+                        
+
+
+
+
+					   <div style="background-color: #fff;border:solid 1px #000;" id="zbtn">
+                                <a href="<?php  echo $this->createMobileUrl('voindex',array('hdid'=>$_GPC['hdid']))?>" style="font-size:18px;width: 100%;display: block;">返回活动</a>
+						</div>
+                <div style="margin:40px 5% 0px;width:90%;" id="jiandiv2">
+                                <div style="margin-left:25%;" id="jiandiv">奖品设置</div>
+                      
+                       <div style="padding:0px 0px 10px 10px">
+                                              
+											 <?php  echo html_entity_decode($this->settings[0]['jian_p'], ENT_QUOTES)?> 
+										</div>
+               
+                </div>
+             
+                <script type="text/javascript">//锚点
+                        function anchor() {
+                                $("#TopTipHolder").show();
+                                if ($("#TopTipHolder").css('height') == '0px') {
+                                        $("#TopTipClose").click(); //执行关闭
+                                        $("#TopTipHolder").css('height', '35px'); //弹出
+                                }
+                        }
+                        function anchor_follow() {
+                                $("#fly_page").show();
+                        }
+                        //隐藏提醒关注注册弹框
+                        $(".close").click(function() {
+                                $("#no_follow").hide();
+                                $("#bg").hide();
+                        });
+                        //隐藏
+                        function hidediv(id) {
+                                if (id == 0) {
+                                        $('.dis').hide();
+                                        $('.divShow').hide();
+                                }
+                                $('.dis' + id).hide();
+                                $('.divShow' + id).hide();
+                        }</script>
+                <style>body,h1,p,form,ul,li,dl,dd,input,h2,h3,th,td,table,tr,td,tbody,thead{margin:0;padding:0}</style>
+               <?php (!empty($this) && $this instanceof WeModuleSite) ? (include $this->template('common_footnew5', TEMPLATE_INCLUDEPATH)) : (include template('common_footnew5', TEMPLATE_INCLUDEPATH));?>

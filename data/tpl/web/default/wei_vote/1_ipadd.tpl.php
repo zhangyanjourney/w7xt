@@ -1,0 +1,34 @@
+<?php defined('IN_IA') or exit('Access Denied');?><?php (!empty($this) && $this instanceof WeModuleSite || 1) ? (include $this->template('common/header', TEMPLATE_INCLUDEPATH)) : (include template('common/header', TEMPLATE_INCLUDEPATH));?>
+<ul class="nav nav-tabs">
+	<li><a href="<?php  echo $this->createWebUrl('Ip', array())?>">黑名单列表</a></li>
+		<li class="active"><a href="<?php  echo $this->createWebUrl('Ip', array('op' => 'add'))?>">添加黑名单</a></li>
+</ul>
+
+<form action="<?php  echo $this->createWebUrl('Ip', array('op' => 'add'))?>" method="post" class="form-horizontal bv-form" role="form" id="form1" novalidate="novalidate">
+	<div class="panel panel-info">
+		<div class="panel-heading">添加黑名单</div>
+		<div class="panel-body">
+			<div class="form-group">
+				<label class="col-xs-12 col-sm-3 col-md-2 control-label">IP或者是OPENID</label>
+				<div class="col-sm-9 col-xs-12">
+					<input type="text" name="ip" value="<?php  echo $urs['name'];?>" class="form-control">
+				<small class="help-block" style="display: none;">黑名单不能为空</small></div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-9 col-xs-12">
+			<input type="hidden" name="token" value="2c707ead">
+			<input type="hidden" name="id" value="<?php  echo $urs['id'];?>">
+			<input type="hidden" name="form" value="2c707ead">
+			<input type="submit" value="提交" class="btn btn-primary">
+		</div>
+	</div>
+</form>
+
+
+
+
+<?php (!empty($this) && $this instanceof WeModuleSite || 1) ? (include $this->template('common/footer', TEMPLATE_INCLUDEPATH)) : (include template('common/footer', TEMPLATE_INCLUDEPATH));?>
+

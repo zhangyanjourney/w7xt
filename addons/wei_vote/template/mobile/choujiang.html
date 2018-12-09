@@ -1,0 +1,365 @@
+﻿{template 'common_head_top'}
+  <link rel="stylesheet" type="text/css" href="{TEMPLATE_PATH}css/conn.css">
+  <link rel="stylesheet" type="text/css" href="{TEMPLATE_PATH}css/rank.css">
+  <link rel="stylesheet" href="{TEMPLATE_PATH}css/demo.css">
+  <script src="http://libs.baidu.com/jquery/1.6.4/jquery.min.js"></script>
+  <script src="{TEMPLATE_PATH}js/awardRotate.js"></script>
+    <script>
+        $(function (){
+            var rotateTimeOut = function (){
+                $('#rotate').rotate({
+                    angle:0,
+                    animateTo:2160,
+                    duration:8000,
+                    callback:function (){
+                        alert('网络超时，请检查您的网络设置！');
+                    }
+                });
+            };
+            var bRotate = false;
+
+            var rotateFn = function (awards, angles, txt){
+                bRotate = !bRotate;
+                $('#rotate').stopRotate();
+                $('#rotate').rotate({
+                    angle:0,
+                    animateTo:angles+1800,
+                    duration:8000,
+                    callback:function (){
+                        alert(txt);
+                        bRotate = !bRotate;
+                    }
+                })
+            };
+
+            $('.pointer').click(function (){
+
+                if(bRotate)return;
+                //var item = rnd(0,7);
+                 var opid = $("#opid").val();                
+                $.post('{php echo $this->createMobileUrl('Zhongjiang', array());}',
+				{            
+				               opid:opid,hdid:'<?php echo $_GPC[hdid];?>',
+                              
+
+                  },
+				  function(response){
+	 
+	        
+					var item =   parseInt(response.yes.d);
+					
+					console.log(response);
+					zhong(item);
+					 //$res['yes']['q']
+					if(response.yes.q){
+					      alert(response.yes.q);
+					}
+					// alert(response.yes.q);
+					 
+					},'json');   
+                
+               
+
+              
+            });
+        
+	        //$prize_arr = array( 
+		     //   '0' => array('id'=>1,'prize'=>$this->settings[0]['cn_4'],'v'=>$this->settings[0]['cr_4'],'m'=>$this->settings[0]['cm_4']), 
+			//	'1' => array('id'=>2,'prize'=>$this->settings[0]['cn_3'],'v'=>$this->settings[0]['cr_3'],'m'=>$this->settings[0]['cm_3']), 
+			//	'2' => array('id'=>3,'prize'=>$this->settings[0]['cn_2'],'v'=>$this->settings[0]['cr_2'],'m'=>$this->settings[0]['cm_2']), 
+			//	'3' => array('id'=>4,'prize'=>$this->settings[0]['cn_1'],'v'=>$this->settings[0]['cr_1'],'m'=>$this->settings[0]['cm_1']), 
+			//	'4' => array('id'=>0,'prize'=>'下次没准就能中哦','v'=>$kk,'m'=>1),
+		
+		    // );
+		
+		function zhong(m){
+		//console.log(m);
+            switch (m) {
+			  
+                    case 5:
+                     
+                        rotateFn(5, 337, '未中奖');
+                        break;
+                    case 1:
+                      
+                        rotateFn(1, 26, '<?php echo $this->settings[0]['cn_4'];?>');//特中奖26
+                        break;
+                    case 2:
+                      
+                        rotateFn(2, 283, '<?php echo $this->settings[0]['cn_3'];?>');//一中奖137   未中奖
+                        break;
+                    case 3:
+                      
+                        rotateFn(3, 185, '<?php echo $this->settings[0]['cn_2'];?>');//二中奖137  未中奖
+                        break;
+                    case 4:
+                      
+                        rotateFn(4, 88, '<?php echo $this->settings[0]['cn_1'];?>');//三中奖88
+                        break;
+                   // case 5:
+                       
+                     //   rotateFn(5, 185, '10Q币');
+                    //    break;
+                  //  case 6:
+                     
+                  //      rotateFn(6, 235, '免分期服务费');
+                  //      break;
+                //    case 7:
+                        
+                  //      rotateFn(7, 287, '提高白条额度');
+                  //      break;
+                }
+
+        }
+		
+		
+		
+		
+		});
+        function rnd(n, m){
+            return Math.floor(Math.random()*(m-n+1)+n)
+        }
+		
+		
+		
+    </script>
+	<style>
+	.pd {
+    padding: 0 10px;
+}
+
+#xiana {
+   
+    text-align: center;
+    background: #DDDDD4;
+    margin-top: 10px;
+    height: 40px;
+    line-height: 40px;
+    background: #04BE02;
+    color: #FFFFFF;
+    border-radius: 5px;
+}
+#xiana a {
+    color: #FFFFFF;    display: block;
+}
+
+  
+	</style>
+</head>
+<body>
+<script type="text/javascript">
+    function showCover()
+    {
+        $("#favor_weixin").show();
+        $("#wx-cover").show();
+    }
+    function hideCover()
+    {
+        $("#favor_weixin").hide();
+        $("#wx-cover").hide();
+    }
+
+	
+	
+	
+</script>
+{template 'common_head'}
+    <div class="pd">
+		<div id="xiana">
+				<a href="{php echo $this->createMobileUrl('myjp',array('hdid'=>$_GPC['hdid']))}">我的奖品</a>
+		</div>
+			
+	</div>
+    <div class="turntable-bg">
+        <!--<div class="mask"><img src="images/award_01.png"></div>-->
+        <div class="pointer"><img src="{TEMPLATE_PATH}images/pointer.png" alt="pointer"></div>
+		
+		
+        <div class="rotate" >
+		    {if $this->settings[0]['jptupian'] != ''}
+			    <img id="rotate" src="<?php echo tomedia($this->settings[0]['jptupian']);?>" alt="turntable">
+			{else}
+			     <img id="rotate" src="{TEMPLATE_PATH}images/turntable.png" alt="turntable">
+			{/if}
+		
+	
+		   
+		   
+		</div>
+		
+		
+		
+		<input type="hidden" name="opid"  id ="opid" value="{$opid}">
+    </div>
+	<style>
+	
+	   .vip-winning {
+			    padding: 10px;
+			position: relative;
+		}
+	
+	.vip-winning .vip-winning-header {
+
+	
+	
+	 width: 181px;
+    height: 32px;
+    background: url({TEMPLATE_PATH}/images/title.png) no-repeat;
+    background-size: 181px auto;
+    margin: 0 auto;
+    font-size: 18px;
+    color: #fff;
+    line-height: 28px;
+    text-align: center;
+    margin-bottom: 10px;
+	
+	
+}
+.vip header {
+    height: 2em;
+    line-height: 2.2em;
+    padding: 0 .8em;
+    background-color: #fff;
+    border-bottom: 1px solid #eaeaea;
+    overflow: hidden;
+}
+
+.vip header span {
+    font-size: .65em;
+    white-space: nowrap;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
+    color: #533b24;
+}
+
+.vip-winning-list {
+    border: 1px solid #f2e3be;
+    background: #feefc7;
+    border-radius: .5em;
+    position: relative;
+    top: -.7em;
+}
+
+.vip-winning-list .vip-winning-detail {
+        height: 140px;
+    overflow: hidden;
+    margin: 1em .5em .5em .5em;
+    padding: .3em .5em;
+    background: #f9e0a2;
+    border-radius: .4em;
+    -webkit-box-shadow: inset 0 0 .5em #f7ce98;
+}
+
+.vip-winning-list ul li {
+    color: #333;
+}
+
+.vip-winning-list ul li a {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.vip-winning-list ul li a span {
+    margin-right: 1.45em;
+}
+.vip-winning-list ul li a * {
+  
+    line-height: .8em;
+    vertical-align: middle;
+}
+
+.vip-winning-list ul li a * {
+
+    line-height: .8em;
+    vertical-align: middle;
+}
+
+
+.turntable-bg {
+
+    margin-bottom: 30px;
+
+}
+
+
+.vip-prize-content {
+    padding: 10px 20px;
+    background-color: #f6f6f6;
+    border-top: 1px solid #efeeec;
+}
+
+
+.mgt {
+
+    margin-bottom: 80px;
+}
+
+	</style>
+	
+	
+	<!-- {if $zhong == ''}
+
+{else}
+
+
+<div class="vip-winning">
+			<header class="vip-winning-header"><span>中奖名单</span></header>
+			<div class="vip-winning-list">
+				<div class="vip-winning-detail" id="prizeList">
+				
+					<marquee scrollamount="2" behavior="scroll" direction="up" style="height: 100%;">
+					<ul>
+					
+					       {loop $zhong $i $item}
+						   
+						      <li><a href="javascript:;"><span>{$item['nickname']}</span><b>{$item['prize']}</b></a></li>
+						   
+						   {/loop}
+					 </ul>
+					 </marquee>
+				</div>
+			</div>
+	</div>
+
+{/if} -->
+	
+	
+	
+	
+
+	
+	
+
+    <div class="vip-prize-content mgt" id="vip-prize-content" style="" show="1">
+   	{if $this->settings[0]['choujianjiesao'] != ''}
+            <div id="prize">
+        
+				<!-- <div class="Voting-title">温馨提示</div> -->
+				
+				<section id="free-read" class="ui-panel">         
+					<div class="list-title">             
+						<div class="tit">温馨提示</div>            
+						
+					</div>        
+			
+				</section>
+				
+				<div class="Voting-Content">
+					{php echo html_entity_decode($this->settings[0]['choujianjiesao'], ENT_QUOTES)}
+				</div>
+			  
+			</div>
+    {else}
+
+    {/if}	
+
+	</div>
+	 
+
+	 
+{template 'common_foot'}

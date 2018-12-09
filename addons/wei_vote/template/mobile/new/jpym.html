@@ -1,0 +1,176 @@
+{template 'common_head_topnew'}
+  <link rel="stylesheet" type="text/css" href="{TEMPLATE_PATH}css/conn.css">
+    <link rel="stylesheet" type="text/css" href="{TEMPLATE_PATH}css/rank.css">
+	  <link rel="stylesheet" type="text/css" href="{TEMPLATE_PATH}js/sweetalert.css">
+  <script type="text/javascript" src="{TEMPLATE_PATH}js/jquery-1.8.3.min.js"></script>
+   <script type="text/javascript" src="{TEMPLATE_PATH}js/newsweetalert.min.js"></script>
+<style>
+	
+	   body {
+    background:#DDDDDD
+}
+	   .jingping{
+	       padding:1px; background-color: #dacbcb;
+           overflow: hidden;
+		   
+	   
+	   }
+	
+	    .jingping span{
+	       width:33.33%;
+		   height:40px;
+		   background:#fff;
+		   display:black;
+		   display:block;
+		   float:left;
+		   line-height:40px;
+		   text-align:center;
+		   margin-top:5px;
+		   
+	   
+	   }
+	   .c1{
+	       color: #888888;
+	       margin-top: 0px;
+	   
+	   }
+	   .dibu{
+	      margin-bottom:80px;
+          height:10px;	
+          clear:both;  
+	   
+	   }
+	   
+	   .vote-number-p1, .vote-number-p2, .vote-number-p3 {
+    color: #555;
+}
+
+
+	.mui-bar-tab .mui-tab-item .mui-icon {
+    top: 5px;
+ 
+}
+
+.top-p3 a {
+    color: #333333;
+  
+}
+.mui-input-row .mui-btn+input, .mui-input-row label+input, .mui-input-row:last-child {
+
+    height: 34px;
+}
+
+body {
+    font-family: "Microsoft Yahei","微软雅黑",Arial,"Hiragino Sans GB","宋体","Helvetica Neue",Helvetica,sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    color: #000;
+    background-color: #fff;
+}   
+	   
+	   
+	   
+	   
+	</style>
+</head>
+<body>
+{template 'common_headnew'}
+	
+
+   <div class="jingping">
+       <span>奖品名称</span>
+	   <span>金额/类型</span>
+	   <span>是否领取</span>
+   
+   </div>
+   {loop $vote_zhong $index $item}
+   <div class="jingping c1">
+       <span>{$item['prize']}</span>
+	   {if $item['hongbao'] == '0'}
+		 <span>实物奖品</span>
+		{else}
+		 <span>{$item['hongbao']}元</span>
+		{/if}
+	   
+	   
+	  
+	    {if $item['isok'] == '1'}
+		 <span>已领取</span>
+		{else}
+		 <span style="color: #8a6de9;" class ="demo_6 button" cid="{$item['id']}">点击领取</span>
+		{/if}
+	   
+	 
+   
+   </div>
+   {/loop}
+   <div class="dibu">
+     
+   
+   </div>
+   
+   
+   <script>
+       $(".demo_6").click(function() {
+	               var cid = $(this).attr("cid");
+	   
+	         
+                    swal({
+                        title: "销核奖品",
+                        text: "您当前销核ID是:"+cid,
+                        type: "input",
+                        showCancelButton: true,
+                        closeOnConfirm: false,
+                        animation: "slide-from-top",
+                        inputPlaceholder: "请输入销核码!"
+                    }, function(inputValue) {
+                        if (inputValue === false)
+                            return false;
+                        if (inputValue === "") {
+                            swal.showInputError("请输入销核码!");
+                            return false
+                        }
+						
+						
+						
+						$.post('{php echo $this->createMobileUrl('xiaoheajax',array('type'=>'uids'))}', { cid: cid,hdid:'<?php echo $_GPC[hdid];?>',mima: inputValue }, function(data){
+						
+						         if(data.ok=='1'){
+								     swal("OK!", data.no, "success");
+									 // location.reload();
+									 
+									  swal({
+										title: "OK!",
+										text: data.no,
+									   type: "success",
+										
+										
+									}, function(inputValue) {
+									
+									
+									location.reload();
+									
+									})
+
+								 }else{
+								      swal("OMG!", data.no, "error");
+								 
+								 }
+								
+						 
+					   },'json')
+						
+						
+					
+						
+						
+                       
+                    });
+                });
+   
+   
+   
+   
+   
+   </script>
+{template 'common_footnew'}

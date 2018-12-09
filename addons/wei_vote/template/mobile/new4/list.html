@@ -1,0 +1,998 @@
+{template 'common_head_topnew'}
+
+
+
+
+	<link href="{$_W['siteroot']}app/resource/css/common.min.css?v=20170802" rel="stylesheet">
+	
+
+  <link rel="stylesheet" type="text/css" href="{TEMPLATE_PATH}css/conn.css">
+    <link rel="stylesheet" type="text/css" href="{TEMPLATE_PATH}css/list.css">
+	<link rel="stylesheet" type="text/css" href="{TEMPLATE_PATH}js/sweetalert.css">
+
+	<style>
+.mui-ellipsis{
+color:#fff;
+
+}
+
+</style>  
+</head>
+<body>
+<style>
+
+	   .icon{
+    font-size: 14px;
+    margin-right: 3px;
+}
+
+
+
+.photo-but a {
+    <!-- background: #87D7DC; -->
+    color: #fff;border-radius: 3px
+}
+.photo-myvote {
+   
+    <!-- background:#87D7DC; -->
+	border-radius: 3px
+
+}
+.paim-1,.paim-2 {
+    <!-- background: #87D7DC; -->
+	  
+}
+
+
+
+#daojishi{
+
+       background: #F64343;
+border-radius: 3px
+}
+#paim {
+  
+    background: #6f2dff;
+	border-radius: 3px
+}
+
+
+</style>
+
+<style>
+#hour_show,#minute_show,#second_show{
+color:#fff;
+
+}
+#Children .Children-ul li {
+    width: 16%;
+
+}
+
+.fdfdfdf {
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    text-align: center;
+    background: #f25959;
+    margin-top: 10px;
+}
+.fdfdfdf a{
+
+ overflow:hidden;
+ display:block;color:#fff;
+ 
+
+}
+
+
+
+
+
+.ui-panel {
+    <!-- background-color: #fff; -->
+}
+.ui-panel {
+    overflow: hidden;
+     margin-bottom: 10px;
+}
+
+
+.list-title {
+       padding: 18px 0 0px 0;
+}
+
+
+.list-title .tit {
+    width: 181px;
+    height: 32px;
+    background: url({TEMPLATE_PATH}/images/title.png) no-repeat;
+    background-size: 181px auto;
+    margin: 0 auto;
+    font-size: 18px;
+    color: #fff;
+    line-height: 28px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+
+#vote {
+    overflow: hidden;
+    background: #fff;
+    margin-top: 0.01px;
+}
+
+</style>
+
+
+
+  <style>
+  
+  @media only screen and (max-width: 767px)
+	.play_gift {
+		position: relative;
+		border: 0;
+		padding: 25px 0;
+	}
+  
+  @media only screen and (max-width: 767px)
+.play_gift:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 10px;
+    background-color: #f6f6f6;
+    border-top: 1px solid #efefef;
+    border-bottom: 1px solid #efefef;
+}
+  
+  @media only screen and (max-width: 767px)
+.play_gift__title {
+    display: block;
+    font-size: 16px;
+    padding: 0 10px 5px;
+}
+
+.play_gift__title {
+    display: none;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: 400;
+}
+ @media only screen and (max-width: 767px)
+.play_gift__rank {
+    height: 73px;
+}
+.play_gift__rank {
+    position: relative;
+    height: 93px;
+    overflow: hidden;
+    color: grey;
+}
+
+.clear_fix {
+    zoom: 1;
+}
+
+@media only screen and (max-width: 767px)
+.play_rank__item {
+    float: left;
+    width: auto;
+    margin: 0 7px 0 10px;
+    padding: 10px 0;
+    text-align: center;
+}
+.play_rank__item {
+    float: left;
+    width: 15.4%;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.mod_wrap a:hover {
+    text-decoration: none;
+}
+@media only screen and (max-width: 767px)
+.play_rank__img {
+    width: 40px;
+    height: 40px;
+}
+.play_rank__img {
+    position: relative;
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+}
+.play_rank__img img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+ .play_rank__count {
+    text-align: center;
+    padding-top: 5px;
+}
+
+.play_gift__more {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 22px 12px;
+}
+
+.icon_gray_right {
+    background-image: url({TEMPLATE_PATH}images/index.png?max_age=2592000&v=ee20b28d71165fb9fb637b091de95391);
+    background-position: -314px -236px;
+    width: 8px;
+    height: 12px;
+    vertical-align: -1px;
+}
+.icon {
+    display: inline-block;
+    font-size: 0;
+    line-height: 0;
+}
+
+.play_gift__rank {
+    position: relative;
+    height: 93px;
+    overflow: hidden;
+    color: grey;
+}
+
+
+
+
+  </style>
+
+<style>
+
+		
+		.tongji{
+		   overflow:hidden;
+		   margin-top:10px;padding-bottom: 10px;border-bottom: 1px solid #ddd;border-bottom: 10px solid #4b00a7;
+		
+		}
+		.tongji li {
+			list-style-type: none;
+			display: inline-block;
+			float: left;
+			width: 24%;
+			height: auto;
+			text-align: center;
+			color: #fff;
+		}
+		.tongji li label {
+			display: block;
+			color: #fff;
+		}
+
+body {
+    background: #ffffff;
+    font-size: 14px;background-color: #6f2dff;
+}
+
+.index_desc_title {
+    height: 35px;
+    line-height: 35px;
+   
+    padding-left: .6rem;
+}
+.mui-table-view {
+
+    margin-top: 0px;
+ 
+}
+
+.pd{
+  
+  padding: 0 10px;
+ 
+}
+
+
+
+.mui-table-view {
+ 
+    background-color: #8347ff !important;
+    color: #fff;
+}
+
+.bg56{
+background-image: url(../../addons/wei_vote/template/style/images/bg-bw.jpg);
+    background-repeat: repeat-x;
+    background-position: left bottom;
+    background-size: 9px auto;    background-color: #6f2dff !important;padding: 10px;
+
+}
+#photo {
+    padding: 10px;
+    box-sizing: border-box;
+    border-bottom: 10px solid #4b00a7;
+}
+
+
+
+.sd{cursor:pointer;-webkit-animation: scaleout 1.3s infinite ease-in-out;animation: scaleout 1.3s infinite ease-in-out;}
+@-webkit-keyframes scaleout {
+    0% { -webkit-transform: scale(1.0) }
+    100% {
+        -webkit-transform: scale(1.1);
+        opacity: 0;
+    }
+}
+@keyframes scaleout {
+    0% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    } 100% {
+          transform: scale(1.1);
+          -webkit-transform: scale(1.1);
+          opacity: 50;
+      }
+}
+
+.mui-table-view .mui-media-object.mui-pull-left {
+    margin-right: 10px;
+    border-radius: 1000px;
+}
+
+
+.dingwen{
+    position: fixed;
+    top: 25%;
+    right: 10%;
+    z-index: 2000;
+    width: 80%;
+    background: #FFF;
+    border-radius: 5px;
+    border: 10px solid #fff;
+  <!-- background:red; -->
+
+
+}
+
+.votets {
+    position: fixed;
+    top: 10%;
+    z-index: 2000;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    text-shadow: 0 2px 3px #000;
+}
+
+.mui-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 998;
+    background-color: rgba(0,0,0,.5);
+}
+
+header, body, section, div, ul, li, p, em, a, input, button {
+  
+    color: #fff;
+}
+
+</style>
+
+<script type="text/javascript">
+var cc = <?php echo strtotime($this->settings[0]['endtime'])-time();?>;
+var intDiff = parseInt(cc);//倒计时总秒数量
+
+function timer(intDiff){
+	window.setInterval(function(){
+	var day=0,
+		hour=0,
+		minute=0,
+		second=0;//时间默认值		
+	if(intDiff > 0){
+		day = Math.floor(intDiff / (60 * 60 * 24));
+		hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+		minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+		second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+	}
+	if (minute <= 9) minute = '0' + minute;
+	if (second <= 9) second = '0' + second;
+	$('#day_show').html(day+"天");
+	$('#hour_show').html('<s id="h"></s>'+hour+'时');
+	$('#minute_show').html('<s></s>'+minute+'分');
+	$('#second_show').html('<s></s>'+second+'秒');
+	intDiff--;
+	}, 1000);
+} 
+
+$(function(){
+	timer(intDiff);
+});	
+</script>
+ <?php
+    $item['tupian'] = $account['tupian'];
+    //print_r($account['tupian']);
+    $item['tupian'] = str_replace("&quot;","",$item['tupian']);
+	$item['tupian'] =  htmlspecialchars_decode($item['tupian']);
+	$item['tupian'] = stripslashes($item['tupian']);
+	$he = (explode(",",$item['tupian'])); 
+    $f = $he[0];
+?>
+
+<script>
+
+
+
+function call(){
+var mask = mui.createMask();//callback为用户点击蒙版时自动执行的回调；
+mask.close();//关闭遮罩
+					   $(".zhe").hide();
+}
+</script>
+
+<div class="zhe" style="display:none">
+	<div class="voteadd dingwen" onclick="location='{php echo $this->settings[0]['advurl']}&id={$account['id']}&hdid={$_GPC['hdid']}'">
+		<img src="{php echo tomedia($this->settings[0]['advimg'])}" class="adimg" width="100%">
+		<p class="adtext">{php echo $this->settings[0]['advwenzi']}</p>
+	</div>
+
+	<div class="votets ">投票成功，今天您还可以投5票。</div>
+</div>
+<div style=" overflow: hidden;">
+<ul class="mui-table-view">
+    <li class="mui-table-view-cell mui-media">
+        <a href="javascript:;">
+            <img class="mui-media-object mui-pull-left" src="{media $f}">
+            <div class="mui-media-body">
+                {$account['name']}
+                <p class='mui-ellipsis'>{php echo html_entity_decode($account['feifa'], ENT_QUOTES)}</p>
+            </div>
+        </a>
+    </li>
+
+</ul>
+<div class="tongji bg56">
+            <ul>
+                <li><i class="icon iconfont icon-renwubangdan" style="font-size: 12px;"></i>编号<label class="enroll">{$account['bh']}</label></li>
+                <li><i class="icon iconfont icon-piaoshu" style="font-size: 14px;"></i>票数<label class="voteCount">{$account['piao']}</label></li>
+                <li><i style="font-size: 12px;" class="icon iconfont icon-paiming"></i>排名<label class="click"><?php echo ($z_total+1); ?></label></li>
+				
+				{if $this->settings['0']['isliwu'] == 1&&$this->settings['0']['liwuinfo'] == 0}
+					    <?php 
+						  $account['yuan'] = ceil($account['yuan']); 
+						?>
+						<li><i style="font-size: 12px;" class="icon iconfont icon-liwu"></i>点<label class="click">{$account['yuan']}</label></li>
+			
+				{/if}
+				
+            </ul>
+            <div class="fix"></div>
+        </div>
+</div>
+    <div id="paim">
+  
+		
+		 {if $this->settings[0]['zidingyi1'] != ''}
+				
+				  
+				  
+				   <p>{php echo $this->settings[0]['zidingyi1']}：{$account['zidingyi1']}</p>
+			{else}
+			
+			{/if}
+		 {if $this->settings[0]['zidingyi2'] != ''}
+				
+				  
+				  
+				   <p>{php echo $this->settings[0]['zidingyi2']}：{$account['zidingyi2']}</p>
+			{else}
+			
+			{/if}
+ {if $this->settings[0]['zidingyi3'] != ''}
+				
+				  
+				  
+				   <p>{php echo $this->settings[0]['zidingyi3']}：{$account['zidingyi3']}</p>
+			{else}
+			
+			{/if}
+		
+      </div>
+    </div>
+    <div id="photo" class="bg56">
+    
+       
+      <ul class="photo-Child">
+	           <?php
+					$he = (explode(",",$account['tupian'])); 
+
+					for($i=0;$i<count($he)-1;$i++){ 
+					$f = $he[$i];
+					$f = str_replace("&quot;","",$f);
+					$f =  htmlspecialchars_decode($f);
+					$f = stripslashes($f);
+					//$f = 'images/'.$f;
+					
+					echo "<li><img src='".tomedia($f)."'></li>";
+					} 
+
+
+					?>   
+	  
+             
+			  
+	  </ul>
+	  <?php 
+         $houzhou = substr($account['zidingyi4'], -3);
+
+	  ?>
+            {if $this->settings[0]['zidingyi4'] != ''&&$account['zidingyi4'] != ''&&$houzhou=='mp4'}
+				
+				  <div width="100%" height="100%" >
+					<video  width="100%" height="100%" id="playVideo" src="{$account['zidingyi4']}" controls="controls">
+					your browser does not support the video tag
+					</video>
+					
+				 </div>
+				  
+			{else}
+				<div width="394px" height="221px" style="overflow:hidden">	
+				  {php echo html_entity_decode($account['zidingyi4'], ENT_QUOTES)}
+				 
+				</div>
+			{/if}	
+		
+		
+		
+		<style>
+		iframe{
+			width:100%;
+			height:221px;
+		  
+		}
+		
+		</style>
+   
+	<!--   {if $this->settings['0']['yaz'] == 1}
+		<div onclick="toupiao2({$_GPC['id']},'{$_W[openid]}')" class="photo-myvote">
+		{else}
+		<div onclick="toupiao({$_GPC['id']},'{$_W[openid]}')" class="photo-myvote">
+	  {/if} -->
+     
+         
+      </div>
+    </div>
+	
+				
+				{if $this->settings['0']['isliwu'] == 1&&$this->settings['0']['liwuinfo'] == 0}
+					
+					<div style="background: #6f2dff !important;"">
+					       <div class="index_desc_title" style=" color: #fbc108"><i class="iconfont icon-liebiao"></i>礼物列表</div>
+                    </div>
+				{else}
+
+				    <div class ="pd" style="margin-bottom: 60px; background: #fff;background: #6f2dff !important;">
+									<div class="index_desc_title" style="    color: #fbc108"><i class="iconfont icon-huodongjieshao"></i>活动介绍</div>
+									<div class="desc_content" deep="2">
+									
+									
+						{php echo html_entity_decode($this->settings[0]['huodong_sm'], ENT_QUOTES)}
+						
+						
+						</div>
+							
+					</div>
+					
+				{/if}
+				
+				{if empty($liwujilu) && $this->settings['0']['isliwu'] == 1&&$this->settings['0']['liwuinfo'] == 0}
+				 <div style="text-align:center;line-height: 45px;color: #fff">没有更多记录！</div>
+				{/if}
+				{if !empty($liwujilu)  && $this->settings['0']['isliwu'] == 1&&$this->settings['0']['liwuinfo'] == 0}			
+					<ul class="mui-table-view" id="pullrefresh">
+					
+						 {loop $liwujilu $it}
+							<li class="mui-table-view-cell mui-media">
+								<a href="javascript:;">
+									<img class="mui-media-object mui-pull-left" src="{php echo $it['avatar']}">
+									<div class="mui-media-body">
+										{php echo $it['nickname']}，给TA送了{php echo $it['shuliang']}份{php echo $it['liwuname']}！
+										<p class='mui-ellipsis'><?php echo date("Y-m-d H:i",$it['createtime']);?></p>
+									</div>
+								</a>
+							</li>
+						 {/loop}	
+					</ul>
+				{/if}
+	<input type="hidden" name="page" id="page" value="1" />	
+	<script type="text/javascript" src="{TEMPLATE_PATH}js/sweetalert.min.js"></script>
+    <script type="text/javascript">
+   
+   
+     var latitude = 0;
+		var longitude = 0;
+        wx.ready(function () {
+							wx.getLocation({
+								type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+								success: function (res) {
+									latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+									longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+									var speed = res.speed; // 速度，以米/每秒计
+									var accuracy = res.accuracy; // 位置精度
+									//alert(latitude);
+								},
+								cancel: function (res) {
+									alert('用户拒绝授权获取地理位置');
+									//location.reload(); 
+
+								}
+							});
+
+					});
+   
+ 
+   
+   
+   
+    $(".photo-myvote33").on('click', function (e)
+    {
+             e.preventDefault();
+
+             $.post('{php echo $this->createMobileUrl('listajax',array('type'=>'uids'))}', { hdid:<?php echo $_GPC['hdid']?>,p: <?php echo $_GPC['id']; ?>,latitude:latitude,longitude:longitude  }, function(data){
+  
+	if(data.b){
+	   $('#toupiao').html(data.b+'票');
+	}else{
+	   $('#toupiao').html(data.a);
+	
+	}
+    
+         
+    if (data == '')
+    {
+	
+	        swal({   title: "'公众号:'+$_W['account']['account']",   text: "今日投票数以用完！",   timer: 4000 });
+            $('#toupiao').append('<span>已投票</span>');
+    }else
+    {
+	    swal(data.a);
+		
+		if(data.c==1){
+							
+							
+								{if $this->settings[0]['keyword'] == ''}
+							
+							
+							
+							      swal({    title: "",   text: "<div id ='guanzhu' style='width:250px;height:250px;text-align:center;margin:0px auto;'> <img src='{$_W['account']['qrcode']}'><p style='text-align:center;'>关注公众号，回复关键词{php echo $this->settings[0]['wxkeyword']}进入活动</p></div>",    html: true  });
+							
+							
+							     {else}
+							
+						
+							    setTimeout(function(){
+				   
+				                   window.location.href="{php echo $this->settings[0]['keyword'];}";
+							    },2000)
+
+			
+							
+							
+							    {/if}
+							
+						
+							
+							
+			}
+			
+		    if(data.c==4){
+					 setTimeout(function(){
+				   
+				          window.location.href="{php echo $this->createMobileUrl('Chouqiang',array('type'=>'uids','hdid'=>$_GPC['hdid']))}";
+						 },2000)
+
+			}
+		   
+	
+    };
+         
+    },'json')
+
+
+
+    });
+    </script>
+	
+<script type="text/javascript">
+
+        var latitude = 0;
+		var longitude = 0;
+        wx.ready(function () {
+							wx.getLocation({
+								type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+								success: function (res) {
+									latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+									longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+									var speed = res.speed; // 速度，以米/每秒计
+									var accuracy = res.accuracy; // 位置精度
+									//alert(latitude);
+								},
+								cancel: function (res) {
+									alert('用户拒绝授权获取地理位置');
+									//location.reload(); 
+
+								}
+							});
+
+					});
+        function toupiao(k,od,inputValue){
+		  
+		            //var lang = "Java";
+                    lang = ".p_"+k;
+		            
+					
+		            $.post('{php echo $this->createMobileUrl('listajax',array('type'=>'uids'))}', { hdid:<?php echo $_GPC['hdid']?>,p: k,latitude:latitude,longitude:longitude,od:od,inputValue:inputValue }, function(data){
+                    if(data.b){
+					   $(lang).html(data.b+'票');
+					    {if !empty($this->settings[0]['advimg'])}
+					
+						  var mask = mui.createMask(call);
+                          mask.show();//显示遮罩
+					      $(".zhe").show();
+					      $(".votets").html(data.a);return;
+					
+						{/if}
+					
+					}
+						 
+					if (data == '')
+					{
+					
+							swal({   title: "'公众号:'+$_W['account']['account']",   text: "今日投票数以用完！",   timer: 4000 });
+							
+					}else
+					{
+							
+							
+							swal(data.a);
+							
+							
+							if(data.c==1){
+							
+							
+							{if $this->settings[0]['keyword'] == ''}
+							
+							
+							
+							      swal({    title: "",   text: "<div id ='guanzhu' style='width:250px;height:250px;text-align:center;margin:0px auto;'> <img src='{$_W['account']['qrcode']}'><p style='text-align:center;'>关注公众号，回复关键词{php echo $this->settings[0]['wxkeyword']}进入活动</p></div>",    html: true  });
+							
+							
+							{else}
+							
+						
+							    setTimeout(function(){
+				   
+				                   window.location.href="{php echo $this->settings[0]['keyword'];}";
+							    },2000)
+
+			
+							
+							
+							{/if}
+							
+						
+							
+							
+							
+							
+							
+							}
+							if(data.c==4){
+							    setTimeout(function(){
+				   
+				                   window.location.href="{php echo $this->createMobileUrl('Chouqiang',array('hdid'=>$_GPC['hdid']))}";
+							    },2000)
+
+							}
+							
+							
+							
+					};
+						 
+					},'json')
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		}
+	function toupiao2(k,od){
+                    swal({
+                        title: "",
+                        text: "<img id='toggle' class='imgverify' src='{php echo $this->createMobileUrl('Codeyz',array('hdid'=>$_GPC['hdid']))}&r="+Math.round(new Date().getTime())+"'>",
+                        type: "input",
+					    confirmButtonText:"确认",
+						confirmButtonColor:"#f60",
+						cancelButtonText:"取消",
+						 html: true,
+                        showCancelButton: true,
+                        closeOnConfirm: true,
+                        animation: "slide-from-top",
+                        inputPlaceholder: "请填写上面的验证码"
+                    }, function(inputValue) {
+                        if (inputValue === false)
+                            return false;
+                        if (inputValue === "") {
+                            swal.showInputError("请输入!");
+                            return false
+                        }
+                       toupiao(k,od,inputValue); //swal("棒极了!", "您填写的是: " + inputValue, "success");
+                       //swal.close();
+				   });
+					
+    }
+
+
+</script>
+	
+	
+    <script type="text/javascript">
+    function showCover()
+    {
+          $("#favor_weixin").show();
+          $("#wx-cover").show();
+    }
+    function hideCover(){
+          $("#favor_weixin").hide();
+          $("#wx-cover").hide();
+    }
+
+
+
+</script>
+
+
+
+	<script>
+	
+	(function($) {
+    $.extend({
+        myTime: {
+            /**
+             * 当前时间戳
+             * @return <int>        unix时间戳(秒)  
+             */
+            CurTime: function(){
+                return Date.parse(new Date())/1000;
+            },
+            /**              
+             * 日期 转换为 Unix时间戳
+             * @param <string> 2014-01-01 20:20:20  日期格式              
+             * @return <int>        unix时间戳(秒)              
+             */
+            DateToUnix: function(string) {
+                var f = string.split(' ', 2);
+                var d = (f[0] ? f[0] : '').split('-', 3);
+                var t = (f[1] ? f[1] : '').split(':', 3);
+                return (new Date(
+                        parseInt(d[0], 10) || null,
+                        (parseInt(d[1], 10) || 1) - 1,
+                        parseInt(d[2], 10) || null,
+                        parseInt(t[0], 10) || null,
+                        parseInt(t[1], 10) || null,
+                        parseInt(t[2], 10) || null
+                        )).getTime() / 1000;
+            },
+            /**              
+             * 时间戳转换日期              
+             * @param <int> unixTime    待时间戳(秒)              
+             * @param <bool> isFull    返回完整时间(Y-m-d 或者 Y-m-d H:i:s)              
+             * @param <int>  timeZone   时区              
+             */
+            UnixToDate: function(unixTime, isFull, timeZone) {
+                if (typeof (timeZone) == 'number')
+                {
+                    unixTime = parseInt(unixTime) + parseInt(timeZone) * 60 * 60;
+                }
+                var time = new Date(unixTime * 1000);
+                var ymdhis = "";
+                ymdhis += time.getUTCFullYear() + "-";
+                ymdhis += (time.getUTCMonth()+1) + "-";
+                ymdhis += time.getUTCDate();
+              //  if (isFull === true)
+              //  {
+                    ymdhis += " " + time.getUTCHours() + ":";
+                    ymdhis += time.getUTCMinutes() + ":";
+                    ymdhis += time.getUTCSeconds();
+              //  }
+                return ymdhis;
+            }
+        }
+    });
+})(jQuery);
+	
+	
+	</script>	
+
+
+<script>
+	
+		
+
+			
+		     $(document).ready(function() {
+			  var lock = false;
+            $(window).scroll(function() {
+             
+                if ($(document).scrollTop() <= 0) {
+                  //  alert("滚动条已经到达顶部为0");
+                }
+
+
+			
+				
+				
+				
+				
+                if ($(document).scrollTop() >= $(document).height() - $(window).height()) {
+                  if (lock)
+					{
+						  return;
+					}
+					lock = true;
+					var html ='';
+					var page = $("#page").val();
+				
+					$.post("{php echo $this->createMobileUrl('Ajaxresume',array())}", { "page": page,"id": <?php echo $_GPC['id'];?> },
+						  function(data){
+				 console.log(data);
+						      for(var o in data){
+
+							    o = parseInt(o);
+				
+								data[o].time = $.myTime.UnixToDate(data[o].createtime,'true');
+							
+								html += "<li class='mui-table-view-cell mui-media'>";
+								html += "	<a href='javascript:;'>";
+								html += "		<img class='mui-media-object mui-pull-left' src='"+data[o].avatar+"'>";
+								html += "		<div class='mui-media-body'>";
+								html += ""+data[o].nickname+"，给TA送了"+data[o].shuliang+"份"+data[o].liwuname+"！";
+								html += "			<p class='mui-ellipsis'>"+data[o].time+"</p>";
+								html += "		</div>";
+								html += "	</a>";
+								html += "</li>";
+								
+
+								
+							  } 
+							  
+						
+						  if(html){
+						  
+						      ++page;
+							  $("#pullrefresh").append(html);
+							  $("#page").val(page);
+						  }
+						 
+						   lock = false;
+						  }, "json");
+                }
+            });
+        });
+		
+		</script>	
+{template 'common_foot3'}
+
+

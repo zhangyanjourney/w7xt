@@ -1,0 +1,692 @@
+<?php defined('IN_IA') or exit('Access Denied');?><!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>报名</title>
+	<meta name="format-detection" content="telephone=no, address=no">
+<?php  echo register_jssdk(false);?>
+<script type="text/javascript" src="<?php  echo $_W['siteroot'];?>app/resource/js/app/util.js"></script>
+	<script src="<?php  echo $_W['siteroot'];?>app/resource/js/require.js"></script>
+
+	 <script type="text/javascript" src="<?php echo TEMPLATE_PATH;?>js/jquery-1.8.3.min.js"></script>
+	  <link rel="stylesheet" type="text/css" href="<?php echo TEMPLATE_PATH;?>font/iconfont.css">
+	<script type="text/javascript" src="<?php  echo $_W['siteroot'];?>app/resource/js/lib/mui.min.js?v=20170802"></script>
+	<script type="text/javascript" src="<?php  echo $_W['siteroot'];?>app/resource/js/app/common.js?v=20170802"></script>
+	<link href="<?php  echo $_W['siteroot'];?>app/resource/css/bootstrap.min.css?v=20170802" rel="stylesheet">
+	<link href="<?php  echo $_W['siteroot'];?>app/resource/css/common.min.css?v=20170802" rel="stylesheet">
+	<link href="http://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet" />
+	<script src="<?php echo TEMPLATE_PATH;?>js/exif.js"></script>
+	<style>
+	
+	/*微信风格*/
+@active_color_red:#44b549;
+@active_color:#44b549;
+@normal:#44b549;
+@active_btn_br:#89e88d;
+@heart_big:#44b549;
+@heart_small:#89e88d;
+
+.bb { background: #f6f6f6; margin: 0 auto; }
+img { width: 100%; max-width: 640px; }
+.center { max-width: 640px; width: 100%; height: 100%; margin: 0 auto; }
+.fr { float: right; }
+.fl { float: left; }
+.fix { clear: both; }
+.btn { display: inline-block; background: @normal; color: #fff; border-radius: 3px; padding: .8rem; font-size: .85rem; }
+.btn:active { background: #555; color: #f5f5f5; }
+.btn:visited { background: @normal; color: #fff; }
+.btn2d { display: inline-block; background: @normal; color: #fff; border-radius: 3px; padding: .8rem; font-size: .85rem; border-bottom: 3px solid @active_btn_br; border-right: 1px solid @active_btn_br; }
+.btn2d:active { background: #555; border-bottom: 3px solid @active_color; color: #f5f5f5; }
+.btn2d:visited { background: @normal; color: #fff; }
+/*顶部滚动文字#ffd800*/
+.NoticeTop { display:table; width:100%; height:36px;line-height:36px; background:@normal;color:#fff;}
+.NoticeTop i { display:table-cell;vertical-align:middle; text-align:center;font-size:1.3rem;padding:0 0.6rem;color:#fff }
+.NoticeTop marquee { display:table-cell;vertical-align:middle; width:95%; }
+/*首页-轮播图滚动小点*/
+.swiper-wrapper, .swiper-slide { height: auto !important; }
+.swiper-pagination-bullet-active { background: @active_color !important; }
+/*头部标题栏*/
+.ctr { max-width: 640px; width: 100%; margin: 0 auto; }
+.ctr .top { height: 40px; line-height: 40px; box-shadow: 0px 0px 3px #aaa; background: #fff; }
+.ctr .top a { color: #333; }
+.ctr .top .h_left { display: inline-block; width: 10%; float: left; height: 40px; line-height: 40px; text-align: center; font-size: 1rem !important; }
+.ctr .top .h_left i.iconfont { font-size: 1rem; }
+.ctr .top .h_title { display: inline-block; width: 80%; text-align: center; word-break: keep-all; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ctr .top .h_right { display: inline-block; width: 10%; float: right; height: 40px; line-height: 40px; text-align: center; }
+/*首页-头部搜索框*/
+.search { opacity: .8; position: fixed; z-index: 99; top: 10px; height: 35px; width: 100%; max-width: 640px; display: table-cell; text-align: center; }
+.search input { font-size: 14px; width: 70%; height: 35px; border-radius: 50px; border: 1px solid #ddd; padding: 0 1rem; }
+.search i { position: fixed; top: 11px; display: inline-block; width: 40px; z-index: 999; height: 35px; font-size: 1.2rem; margin-left: -45px; }
+.music i{ color:@active_color_red }
+
+/*统计*/
+.tongji { margin: .6rem 0; }
+.tongji li { list-style-type: none; display: inline-block; float: left; width: 33%; height: auto; text-align: center; color: #555; }
+.tongji li:nth-child(2n) { border-left: 1px solid #ddd; border-right: 1px solid #ddd; }
+.tongji li label { display: block; color: #222; }
+/*个人页面统计*/
+.detail_tongji i { font-size: 1.3rem; display: inline-block; vertical-align: middle; }
+.detail_tongji li:nth-child(2n) { border-left: none; }
+.detail_tongji li { width: 24.5%; border-right: 1px solid #ddd; }
+.detail_tongji li:last-child { border-right: none; }
+
+/*充值页面*/
+.pay .li { padding: .6rem; }
+.pay .info { height: 92px; }
+.pay .info td { padding: .6rem; background: #fff; border-bottom: 10px solid #f6f6f6; }
+.pay .info td:first-child { width:62px;}
+.pay .info img { border-radius: 100%; width: 62px; max-height: 62px; padding:0 .6rem; float: left; }
+.pay .detail { padding: .3rem; }
+.pay .desc { background: #fff; padding: .6rem;padding-top:0; }
+.pay .zuan { display: inline-block; width: 33.33%; float: left; }
+.pay .zuan .cur { background: @active_color_red; color: #fff; border: 1px solid @active_color_red; }
+.pay .zuan div { font-style: oblique; font-size: 1.2rem; color: @active_color_red; margin: .3rem; border: 1px solid #ddd; padding:.3rem .6rem; border-radius: 3px; text-align: center; }
+.pay .zuan div label { font-size: .7rem; font-style: normal; margin-left: .3rem; }
+.pay #zuaninput { border: 1px solid #ddd; border-radius: 3px; width: 80%; padding: .6rem; }
+.follow { border:1px dotted @active_color_red;margin:.3rem;border-radius:3px;padding:3px;background:#f6f6f6}
+/*报名*/
+.chooseSex i.cur { border: 1px solid @active_color; color: @active_color; }
+.agree {color:#999}
+.agree i { font-size:1.2rem; display:inline-block;float:left; margin-top:-4px}
+.agree .cur {color:@active_color}
+
+/*首页活动介绍*/
+.index_desc_title { height: 35px; line-height: 35px; background: #eee; border-top: 1px dashed #ddd; padding-left: .6rem; }
+.index_desc_title i { font-size: 1.1rem; vertical-align: middle; line-height: 32px; padding-right: 2px; }
+.desc_content { padding: .6rem; }
+.desc_content img { width: 100%; max-width: 640px; }
+	
+	
+	
+	
+	
+	
+	
+		.li { padding: .6rem; }
+		.form { background: #fff; }
+		table { width: 100%; }
+		table .title { padding: .8rem .0rem; text-align: right; width: 70px; }
+		table input, textarea { width: 90%; padding: .6rem; border: none; outline: none; resize: none; }
+		td { border-bottom: 10px; border-bottom: 1px solid #eee; }
+		.desc { vertical-align: top; padding-top: .35rem !important; }
+		.sex { padding: 1rem 0 !important; }
+		.chooseSex { padding-left: .6rem; }
+		.chooseSex i { border: 1px solid #eee; padding: .6rem; margin-right: .6rem; border-radius: 3px; color: #c9c9c9; }
+		.uploadtitle { padding: .6rem; color: #999; }
+		.jia { display: inline-block; float: left; margin: .3rem; height: 50px; width: 50px; border: 1px solid #ddd; text-align: center; line-height: 45px; background: #fff; font-size: 30px; color: #999; }
+		.jia img { height: 50px; width: 50px; }
+		.close { display: inline-block; width: 16px; height: 16px; line-height: 16px; text-align: center; margin-left: -15px; position: relative; background: red; color: #fff; border-radius: 100%; }
+		.img { display: inline-block; position: relative; }
+		.disabled { background: #999; color: #777; }
+		
+		
+		
+		.form input{
+		border: 0px solid rgba(0,0,0,0);margin-bottom: 0px;
+		}
+		
+		
+#file {
+visibility:hidden;
+}
+#view li{
+cursor: pointer;
+    display: inline-block;
+    float: left;
+    margin: .3rem;
+    height: 50px;
+    width: 50px;
+    border: 1px solid #ddd;
+    text-align: center;
+    line-height: 45px;
+    background: #fff;
+    font-size: 30px;
+    color: #999; position: relative;overflow:hidden;
+}
+
+.dw {
+position: absolute;
+    left: 40px;
+    top: -5px;
+    width: 15px;
+}
+.img {
+    display: inline;
+    position: relative;
+}
+
+<!-- .mui-toast-container {
+  
+    min-height: 30px;
+	} -->
+	
+.ctr .top .h_left {
+    display: inline-block;
+    width: 10%;
+    float: left;
+    height: 40px;
+    line-height: 45px;
+    text-align: center;
+    font-size: 1rem !important;
+}	
+	
+	
+	
+</style>
+</head>
+<body class="bb">
+
+	<div class="img" style="display: none;" id="template">
+		<div class="jia">+</div>
+		<span class="close" onclick="wxupload.deletes(this)">×</span>
+	</div>
+	<div class="ctr">
+		<div class="top">
+			<a class="h_left" href="javascript:history.back();"><span class="mui-icon mui-icon-arrowleft"></span><!-- <i class="iconfont">&#xe779;</i> --></a>
+			<span class="h_title">填写报名信息</span>
+			<a class="h_right"></a>
+		</div>
+	</div>
+	<div class="center">
+		<div class="li">
+			<div class="form">
+				<table border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td class="uploadtitle" colspan="2">一次性上传图片1-<?php  echo $this->settings[0]['zuiduotupian']?>张，第一张为封面图</td>
+					</tr>
+					<tr>
+						<td class="imgs" colspan="2">
+							<div style="margin-top: .6rem;">
+								
+								
+								<div class="img">
+									<div id="_box" class="jia">+</div>
+									<span class="close" style="background: rgba(0,0,0,0)"></span>
+								</div><div class="img">
+								 <ul id="view"> </ul></div>
+								
+							</div>
+							  <input required="" onchange="handleFiles(this);" type="file" id="file" multiple="" accept="image/*">
+                      
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="title"><?php  echo $this->settings[0]['xingming']?></td>
+						<td>
+							<input type="text" id="names" class="name" value="" name="name" placeholder="请输入<?php  echo $this->settings[0]['xingming']?>" maxlength="10" />
+						</td>
+					</tr>
+					<tr style="">
+						<td class="title">手机号码</td>
+						<td>
+							<input type="text" id="shouji" class="phone" name="phone" value="" placeholder="请输入本人手机号码" maxlength="11" />
+						</td>
+					</tr>
+					<tr>
+						<td class="title desc">我的介绍</td>
+						<td>
+							<textarea name="declaration" id="feifa" class="declaration-sp"  style="height: 90px" onkeyup="keypress2()" onblur="keypress2()"  placeholder="简单介绍5-140字符内，请勿用表情" maxlength="140"></textarea>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div style="text-align: center; padding: .8rem">
+			  <button type="button" id="form_submit" class="mui-btn mui-btn-royal mui-btn-block">提交报名</button>
+			</div>
+		</div>
+		<div class="navheight">&nbsp;</div>
+
+		<script>$('nav a').eq(1).addClass('cur');</script>
+	</div>
+    <canvas id="canvas1" style="display:none"></canvas>   
+       
+
+	<!-- <div class="mui-toast-container mui-active"><div class="mui-toast-message">登陆成功</div></div> -->
+	<script type="text/javascript"> 
+ 
+              $("#_box").click(function ()
+              {
+                   
+                   var n = $("#view li").length;             
+              if (n<<?php  echo $this->settings[0]['zuiduotupian']?>)
+              {
+              //alert('ok');
+                   $("#file").click();  
+              }else
+              {
+                        mui.toast('上传图片以达到限制') ;
+               
+
+                  };                                                             
+                                         
+              }); 
+
+
+ </script>
+<script type="text/javascript">
+
+ function rotateImg(img, direction,canvas) {    
+        //alert(img);  
+        //最小与最大旋转方向，图片旋转4次后回到原方向    
+        var min_step = 0;    
+        var max_step = 3;    
+        //var img = document.getElementById(pid);    
+        if (img == null)return;    
+        //img的高度和宽度不能在img元素隐藏后获取，否则会出错    
+        var height = img.height;    
+        var width = img.width;    
+        //var step = img.getAttribute('step');    
+        var step = 2;    
+        if (step == null) {    
+            step = min_step;    
+        }    
+        if (direction == 'right') {    
+            step++;    
+            //旋转到原位置，即超过最大值    
+            step > max_step && (step = min_step);    
+        } else {    
+            step--;    
+            step < min_step && (step = max_step);    
+        }    
+        //img.setAttribute('step', step);    
+        /*var canvas = document.getElementById('pic_' + pid);   
+        if (canvas == null) {   
+            img.style.display = 'none';   
+            canvas = document.createElement('canvas');   
+            canvas.setAttribute('id', 'pic_' + pid);   
+            img.parentNode.appendChild(canvas);   
+        }  */  
+        //旋转角度以弧度值为参数    
+        var degree = step * 90 * Math.PI / 180;    
+        var ctx = canvas.getContext('2d');    
+        switch (step) {    
+            case 0:    
+                canvas.width = width;    
+                canvas.height = height;    
+                ctx.drawImage(img, 0, 0);    
+                break;    
+            case 1:    
+                canvas.width = height;    
+                canvas.height = width;    
+                ctx.rotate(degree);    
+                ctx.drawImage(img, 0, -height);    
+                break;    
+            case 2:    
+                canvas.width = width;    
+                canvas.height = height;    
+                ctx.rotate(degree);    
+                ctx.drawImage(img, -width, -height);    
+                break;    
+            case 3:    
+                canvas.width = height;    
+                canvas.height = width;    
+                ctx.rotate(degree);    
+                ctx.drawImage(img, -width, 0);    
+                break;    
+        }    
+    } 
+
+
+
+
+
+var t = new Array();
+function handleFiles(obj) {
+            var canvas, context, img, imgX = 0, imgY = 0, imgScale = 1;
+            var files = obj.files;
+			 var file = obj.files['0'];  
+  //图片方向角 added by lzk  
+  var Orientation = null;  
+
+			EXIF.getData(file, function() {  
+			  // alert(EXIF.pretty(this));  
+			  EXIF.getAllTags(this);   
+			  //alert(EXIF.getTag(this, 'Orientation'));   
+			  Orientation = EXIF.getTag(this, 'Orientation');  
+			  //return;  
+			 console.log(Orientation); 
+			 //alert(Orientation); 
+			});
+	        
+			
+		
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			var total=5;
+                     var n = $("#view li").length;
+                     var z = files.length;
+             if ((n+z)><?php  echo $this->settings[0]['zuiduotupian']?>) {
+                              
+                      mui.toast('图片超过数量') ;
+                     return false;
+                            };
+			
+			
+			
+			
+			
+			
+            img = new Image();
+            
+            canvas = document.getElementById('canvas1');
+            context = canvas.getContext('2d');
+
+            window.URL = window.URL || window.webkitURL;
+            if (window.URL) {
+                img.src = window.URL.createObjectURL(files[0]); //创建一个object URL，并不是你的本地路径
+				//alert(img.src);
+                img.onload = function (e) {
+                    if (img.width >800) {
+                        imgScale = 800 / img.width;
+                    }
+                    canvas.width = img.width * imgScale;
+                    canvas.height = img.height * imgScale;
+                    context.drawImage(img, 0, 0, img.width, img.height, imgX, imgY, img.width * imgScale, img.height * imgScale);
+
+					
+					
+					
+					
+					  if (navigator.userAgent.match(/iphone/i)) {  
+                    console.log('iphone');  
+                    //alert(expectWidth + ',' + expectHeight);  
+                    //如果方向角不为1，都需要进行旋转 added by lzk  
+					//Orientation =8;
+					if(Orientation != "" && Orientation != 1){  
+							//alert(Orientation);  
+							switch(Orientation){  
+								case 6://需要顺时针（向左）90度旋转  
+									alert('需要顺时针（向左）90度旋转');  
+									rotateImg(img,'left',canvas);  
+									break;  
+								case 8://需要逆时针（向右）90度旋转  
+									alert('需要顺时针（向右）90度旋转');  
+									rotateImg(img,'right',canvas);  
+									break;  
+								case 3://需要180度旋转  
+									alert('需要180度旋转');  
+									rotateImg(img,'right',canvas);//转两次  
+									rotateImg(img,'right',canvas);  
+									break;  
+							}         
+						}
+					
+					
+					
+					
+					}
+					
+					
+					
+					
+					
+                   //var imageUri = canvas.toDataURL("image/jpeg");
+				   if (navigator.userAgent.match(/iphone/i)) {  
+
+                   
+
+					    var imageUri = canvas.toDataURL("image/jpeg", 0.4);
+
+					}else{
+
+					
+
+						
+
+                       var imageUri = canvas.toDataURL("image/jpeg");
+
+					}
+	
+				    document.getElementById("view").innerHTML+="<li><img id ='tu' src='"+imageUri+"'  /><img class ='dw'  src = '<?php echo TEMPLATE_PATH;?>/images/999.png'><input type='hidden' name='picture[]' value='"+ imageUri+"' /></li>";
+				                                 
+				     $.post("<?php  echo $this->createMobileUrl('shang1',array('type'=>'uids'))?>", { filed: [imageUri,]},
+                     function(data){
+                          
+                     console.log(data);      
+             if (data) {
+
+                      t.push(data);
+                      var tl = t.length;
+                      var sl = $("#view li").length;
+             if (tl == sl)
+             {
+                 
+					 mui.toast('上传成功') ;
+                                  
+             };
+              
+
+                            
+             }else{
+
+
+                      t.push(data);
+                      $('#loading').css('display','block');
+                           
+                    
+					  mui.toast('上传失败') ;
+                      
+                      };
+                          
+
+                      })
+				   
+				   
+
+
+                    if (img.width > 80) {
+                        imgScale = 80 / img.width;
+                    }
+
+                    canvas.width = img.width * imgScale;
+                    canvas.height = img.height * imgScale;
+                  
+                }
+            }
+            
+        }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	 function Yan(name,shouji,feifa,t){
+              var founderr = false; //初始化founderr变量，
+              if(!(/^\s*[\u4e00-\u9fa5]{2,12}\s*$/).test(name))
+              {
+              return "名称必须是2-12个中文.";
+              founderr = true;
+              }
+              <!-- if(!(/[0]|[1]/).test(gender)) -->
+             
+              <!-- { -->
+              <!-- return "性别必须选一个"; -->
+              <!-- founderr = true; -->
+              <!-- } -->
+
+             // if(!(/^\d{1,2}$/).test(lian))
+             // {
+             // return "年龄必须是数字0-99之间";
+             // founderr = true;
+             // }
+
+              if(!(/^0?(19[0-9]|17[0-9]|16[0-9]|13[0-9]|15[012356789]|18[0123456789]|14[0123456789])[0-9]{8}$/).test(shouji))
+              {
+              return "手机必须是11位的手机号";
+              founderr = true;
+              }
+              if((/[`~!@#$%^&*()_+<>?:"{},.\/;'[\]]/im).test(feifa))
+              {
+              return "不能有特殊字符和为空";
+              founderr = true;
+              }
+              if(t.length<1)
+              {
+              return "必须上传1-<?php  echo $this->settings[0]['zuiduotupian']?>张图片";
+              founderr = true;
+              }
+              if(t.length><?php  echo $this->settings[0]['zuiduotupian']?>)
+              {
+              return "上传图片超出<?php  echo $this->settings[0]['zuiduotupian']?>张";
+              founderr = true;
+              }
+
+              if(feifa =='')
+              {
+              return "介绍不能为空";
+              founderr = true;
+              }
+
+              if(feifa.length<2)
+              {
+              return "介绍不能少于2个字";
+              founderr = true;
+              }
+
+            
+              return founderr;
+
+                   }
+	
+	
+	
+	
+	
+	
+	
+	   $(function(){
+             $("#form_submit").on("click",function()
+             {
+                   var opid = $("#opid").val();                 
+                   var name = $("#names").val();
+                 
+                   var shouji = $("#shouji").val();
+                   var feifa = $("#feifa").val();
+				   
+				   var zidingyi1 = $("#zidingyi1").val();                 
+                   var zidingyi2 = $("#zidingyi2").val();
+                 
+                   var zidingyi3 = $("#zidingyi3").val();
+                   var zidingyi4 = $("#zidingyi4").val();
+				   
+				   
+				  
+                      
+                  var me = Yan(name,shouji,feifa,t);
+                           
+             if(me == false) {
+                                
+
+                  $.post("<?php  echo $this->createMobileUrl('shangadd',array('type'=>'uids','hdid'=>$_GPC['hdid']))?>",
+                  {            
+				               opid:opid,
+                               name: name,
+                              
+                               shouji:shouji,
+                               feifa:feifa,
+							   
+							   
+							   zidingyi1:zidingyi1,
+                               zidingyi2: zidingyi2,
+                              
+                               zidingyi3:zidingyi3,
+                               zidingyi4:zidingyi4,
+                         
+                               t:t
+
+                  },
+             function(data)
+             {
+                                    
+                
+				  
+				   mui.toast(data.a) ;
+				
+                  setTimeout(function()
+             {
+               
+				   if(data.b==1){
+				       window.location.href="<?php  echo $this->settings[0]['keyword']?>"; 
+				  }
+				  if(data.b==3){
+				       window.location.href="<?php  echo $this -> createMobileUrl('list',array('hdid'=>$_GPC['hdid']))?>&id="+data.bmid; 
+				  }
+                  if(data.b==2){
+				       window.location.href="<?php  echo $this -> createMobileUrl('Voindex',array('type'=>'uids','hdid'=>$_GPC['hdid']))?>"; 
+				  }
+
+             },2000);
+
+                                         
+             },'json'); 
+
+             }else
+             {
+                          mui.toast(me);
+                 
+
+             }; 
+             })
+             
+             })
+			 
+			 
+			 
+			 
+			 
+			 
+			 var m = 0;
+            $(document).on("click", "#view li", function()
+		        { 
+								  m = $(this).index();
+								
+								  
+								  
+								  var btnArray = ['是', '否'];
+								  mui.confirm('是否删除图片？', '提示', btnArray, function(e) {
+									if (e.index == 0) {
+										  t.splice(m,1);
+											  $("#view li").eq(m).remove();
+									} else {
+										
+									}
+								  
+								  
+								  
+								  
+								  
+				 
+							})
+
+						 
+				})
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+	</script>
+	
+<?php (!empty($this) && $this instanceof WeModuleSite) ? (include $this->template('common_footnew', TEMPLATE_INCLUDEPATH)) : (include template('common_footnew', TEMPLATE_INCLUDEPATH));?>
